@@ -2,7 +2,8 @@ import { ethers } from "ethers";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 
-export default function NavBar() {
+export default function NavBar(props) {
+  
   const [navbar, setNavbar] = useState(false);
   const [user, setUser] = useState("");
 
@@ -20,7 +21,7 @@ export default function NavBar() {
       });
 
       console.log("Connected", accounts[0]);
-      setUser(accounts[0]);
+      props.setUsers(accounts[0]);
     } catch (error) {
       console.log(error);
     }
@@ -41,7 +42,7 @@ export default function NavBar() {
     if (accounts.length !== 0) {
       const account = accounts[0];
       console.log("Found an authorized account:", account);
-      setUser(account);
+      props.setUsers(account);
     } else {
       console.log("No authorized account found");
     }
@@ -133,15 +134,15 @@ export default function NavBar() {
           className="hidden space-x-2 md:inline-block"
           onClick={connectWallet}
         >
-          {user ? (
+          {props.users ? (
             <div className="font-bold bg-black p-4 text-white rounded-2xl">
-              Wallet: {user.slice(0, 4)}...{user.slice(-4)}{" "}
+              Wallet: {props.users.slice(0, 4)}...{props.users.slice(-4)}{" "}
             </div>
           ) : (
             <p></p>
           )}
 
-          {!user && renderNotConnectedContainer()}
+          {!props.users && renderNotConnectedContainer()}
         </div>
       </div>
     </nav>
