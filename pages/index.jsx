@@ -1,7 +1,12 @@
 import Head from "next/head";
 import Home from "../components/Home";
+import LandingPage from "../components/LandingPage";
+import MyApp from "./_app";
+import _app from 'next/app';
+import { preProcessFile } from "typescript";
 
-const Main = () => {
+const Main = (props) => {
+  
   return (
     <div className="">
       <Head>
@@ -10,10 +15,12 @@ const Main = () => {
       </Head>
 
       <main>
-        <Home />
+        <LandingPage setUsers={props.setUsers} users={props.users} myProp={props.myProp}/>
       </main>
     </div>
   );
 };
+
+
 
 export default Main;

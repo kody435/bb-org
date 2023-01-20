@@ -1,87 +1,51 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "../components/common.module.css";
 import SDK from "weavedb-sdk";
-// import WeaveDB from "weavedb-client";
+
 
 let db;
-const contractTxId = "sPyXyPDKw9uKFs43y7HFvsnKUE7bht3DkBNKA5UcV_o";
+const contractTxId= "sPyXyPDKw9uKFs43y7HFvsnKUE7bht3DkBNKA5UcV_o" 
 
-const Ask_Ques = () => {
-  const [user, setUser] = useState([]);
+export default function Ask_Ques(props) {
+  console.log("Users in Ask_Ques:", props.users)
+  
   const [titles, setTitles] = useState("");
   const [questions, setQuestions] = useState("");
-  const [initDB, setInitDB] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [initDB, setInitDB] = useState(false)
+
+
 
   const setupWeaveDB = async () => {
     window.Buffer = Buffer;
     db = new SDK({
-      contractTxId,
+        contractTxId
     });
-    await db.initializeWithoutWallet();
-    // db = new WeaveDB({
-    //   contractTxId: contractTxId,
-    //   rpc: "http://localhost:8080",
-    // });
+    await db.initializeWithoutWallet()
 
     setInitDB(true);
   };
+
   useEffect(() => {
     setupWeaveDB();
+    console.log("Questions useEffect ran ", db);
   }, []);
 
-  const checkIfWalletIsConnected = async () => {
-    const { ethereum } = window;
-
-    const accounts = await ethereum.request({ method: "eth_accounts" });
-    setUser(accounts);
-
-    if (!ethereum) {
-      alert("Make sure you have metamask!");
-      return;
-    } else {
-      console.log("We have the ethereum object", ethereum);
-    }
-
-    if (accounts.length !== 0) {
-      const account = accounts[0];
-      console.log("Found an authorized account:", account);
-      setUser(account);
-    } else {
-      console.log("No authorized account found");
-    }
-  };
-
-  useEffect(() => {
-    checkIfWalletIsConnected();
-  }, []);
-
+  
+ 
   const addQuestion = async (e) => {
-    const { ethereum } = window;
-    const accounts = await ethereum.request({ method: "eth_accounts" });
-
-    if (accounts.length !== 0) {
+    
       console.log("addQuestion");
+      console.log(initDB);
       setLoading(true)
-
-         const query = await db.add(
-        {
-            title: titles,
-            question: questions,
-            user_address: user,
-            slug: titles.split(" ").join("-").toLowerCase(),
-        },
-        "Questions"
-      );
-      console.log("query: ", query);
+      
+      await db.add({ title: titles, question: questions, user_address: props.users, slug: titles.split(" ").join("-").toLowerCase()}, "Questions")
       setLoading(false)
-    } else {
-      alert("Make sure you have metamask or you haven't connected it!");
-      return;
-    }
+    
   };
 
   return (
+    props.users === "" ? <h1>Connect your wallet</h1>:
     <div className={styles.quest}>
       <title>Brain Boost</title>
       <div className="bg-gradient-to-bl from-sky-500 to-indigo-600 w-screen h-screen">
@@ -137,4 +101,4 @@ const Ask_Ques = () => {
   );
 };
 
-export default Ask_Ques;
+
