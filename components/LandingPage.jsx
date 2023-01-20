@@ -48,23 +48,21 @@ export default function LandingPage (props){
   // }, []);
 
   return (
-    props.users === ""? 
-    <div className="h-screen bg-black pt-36">
-      {/* Outline & Description */}
-      <div className="flex justify-center items-center bg-transparent h-96 flex-col mr-4 ml-4">
-        <h1 className="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500 text-4xl md:text-5xl lg:6xl xl:text-8xl 2xl:text-9xl text-center p-3 mb-5">
-          Making the world's knowledge accessible to all
+    props.users === "" ?
+    <div className="h-screen pt-36 pb-60 text-white bg-black items-center justify-center flex">
+      <div className="flex justify-center items-center bg-transparent h-auto flex-col">
+        <h1 className="text-white bg-transparent font-extrabold text-7xl text-center mb-2">
+          The web3<span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-600"><br></br> brain power</span> platform
         </h1>
-        <h3 className="bg-transparent text-slate-300 text-center mt-5 text-md md:text-xl md:mr-3 md:ml-3 lg:2xl xl:text-4xl 2xl:text-5xl ">
-          A decentralized website where people can give answers to questions and
-          get rewards
+        <h3 className="bg-transparent text-slate-300 text-center mt-5 text-xl font-medium ">
+          A decentralized website where people can give answers to questions<br></br> and get rewards.
         </h3>
         <button
-          className="text-white mt-24 bg-gradient-to-r from-blue-500 to-green-600 px-8 py-6 rounded-2xl text-3xl"
+          className="text-black font-semibold mt-24 bg-white px-9 py-5 rounded-full text-xl hover:bg-blue-600 transition ease-in duration-300 hover:text-white"
           onClick={connectWallet}
         >
-          Share your knowledge
-        </button>
+          Share your knowledge 🚀
+          </button>
       </div>
       <div></div>
     </div>: <Home />
