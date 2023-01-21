@@ -16,7 +16,7 @@ export async function getServerSideProps({ query }) {
 
 export default function Question({ question }) {
   return (
-    <div className="flex flex-col ml-10">
+    <div className="flex flex-col ml-10 text-white">
       <div className="text-5xl font-bold my-10">{question.title}</div>
       <div className="text-2xl mb-10">{question.question}</div>
       <div className="">Vote : {question.vote}</div>
