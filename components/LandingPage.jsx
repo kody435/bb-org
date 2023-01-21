@@ -52,7 +52,7 @@ export default function LandingPage (props){
     <div className="h-screen text-white bg-black items-center justify-center flex">
       <div className="flex justify-center items-center bg-transparent h-auto flex-col">
         <h1 className="text-white bg-transparent font-extrabold text-7xl text-center mb-2">
-          The web3<span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-cyan-500 "><br></br> brain power</span> platform
+          The web3<span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-pink-500 "><br></br> brain power</span> platform
         </h1>
         <h3 className="bg-transparent text-slate-300 text-center mt-1 p-4 text-xl font-medium ">
           A decentralized website where people can give answers<br className=""></br> to questions and get rewards.
