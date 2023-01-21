@@ -28,12 +28,9 @@ export default function MyApp({ Component, pageProps, myProp }) {
     const accountsArray = await eth.request({ method: "eth_accounts" });
 
     if (accountsArray.length > 0) {
-      console.log("Found an authorized account:", accountsArray[0]);
       setUser(accountsArray[0]);
     } else {
       setUser("")
-      console.log("No authorized account found");
-      alert("Connect your Metamask Web2 clown :P")
     }
   };
 
@@ -43,7 +40,6 @@ export default function MyApp({ Component, pageProps, myProp }) {
     ethereum.on("accountsChanged", function (accounts) {
         if (accounts.length > 0) {
             setUser(accounts[0]);
-            console.log("Account changed to:", accounts[0]);
             
         } else{
             setUser("")
@@ -65,8 +61,6 @@ export default function MyApp({ Component, pageProps, myProp }) {
   useEffect(() => {
     getCurrentWalletConnected();
     walletListener();
-    console.log("Use effect ran from _app.jsx")
-  
   }, []);
   
   return (

@@ -45,7 +45,7 @@ export default function Ask_Ques(props) {
   };
 
   return (
-    props.users === "" ? <h1>Connect your wallet</h1>:
+    props.users === "" ? <h1 className="bg-gradient-to-r from-indigo-400 via-blue-400 to-white text-black text-center flex h-screen justify-center items-center font-semibold text-5xl">Pls go to Home page and Login to Metamask</h1>:
     <div className={styles.quest}>
       <title>Brain Boost</title>
       <div className="bg-gradient-to-bl from-sky-500 to-indigo-600 w-screen h-screen">
