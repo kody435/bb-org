@@ -3,7 +3,6 @@ import Home from "../components/Home";
 import LandingPage from "../components/LandingPage";
 import MyApp from "./_app";
 import _app from 'next/app';
-import { preProcessFile } from "typescript";
 
 const Main = (props) => {
   

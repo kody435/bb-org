@@ -64,7 +64,7 @@ export default function NavBar(props) {
   );
 
   return (
-    <nav className="w-full bg-slate-200 shadow">
+    <nav className="w-full bg-transparent shadow">
       <div className="justify-between px-4 md:grid-cols-3 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
         <div>
           <div className="flex items-center justify-between py-3 md:py-5 md:block">
@@ -122,10 +122,10 @@ export default function NavBar(props) {
                 <Link href="/">Home</Link>
               </li>
               <li className="text-black hover:text-blue-600">
-                <Link href="/Ask_Ques">Ask Question</Link>
+                <Link href="/Ask-Question">Ask Question</Link>
               </li>
               <li className="text-black hover:text-blue-600">
-                <Link href="/Chat">Chat</Link>
+                <Link href="/">Notes</Link>
               </li>
             </ul>
           </div>

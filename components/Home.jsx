@@ -1,4 +1,3 @@
-import styles from "./common.module.css";
 import { useEffect, useState } from "react";
 import { Buffer } from "buffer";
 import { map } from "ramda";
@@ -19,10 +18,6 @@ const Home = () => {
     setQuestions(await db.cget("Questions", ["title"]));
   };
 
-  const getUsers = async () => {
-    setUsers(await db.cget("Questions", ["user_address"]));
-  };
-
   const setupWeaveDB = async () => {
     window.Buffer = Buffer;
     db = new SDK({
@@ -39,13 +34,12 @@ const Home = () => {
   useEffect(() => {
     if (initDB) {
       getQuestions();
-      getUsers();
     }
   }, [initDB]);
 
   return (
-    <div className="lg:grid flex flex-col lg:grid-cols-7 mt-10 ">
-      <div className={styles.grid1}>
+    <div className="flex flex-col h-screen w-screen mt-10 ">
+      <div>
         <h2 className="bg-clip-text text-transparent bg-gradient-to-r from-sky-600 to-violet-600 text-3xl flex justify-center mb-5">
           Questions
         </h2>
@@ -57,22 +51,6 @@ const Home = () => {
               </div>
             </Link>
           ))(Questions)}
-        </div>
-      </div>
-
-      <div className={styles.grid2}>
-        <h2 className="text-3xl bg-zinc-900 flex justify-center p-screen bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-violet-600">
-          Leaderboard
-        </h2>
-        <div className="mb-5 ">
-          {map((v) => (
-            <div className="bg-white flex justify-center flex-row m-4 space-x-4 px-4 py-2 text-xl font-medium rounded-2xl drop-shadow-xl bg-gradient-to-r from-violet-700 to-fuchsia-800">
-              <h2 className="bg-transparent text-white rounded-xl">
-                {v.data.user_address.substring(0, 5)}...
-                {v.data.user_address.substring(v.data.user_address.length - 5)}
-              </h2>
-            </div>
-          ))(Users)}
         </div>
       </div>
     </div>

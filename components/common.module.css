@@ -2,12 +2,3 @@
   overflow: hidden;
 }
 
-.grid1 {
-  display: grid;
-  grid-column: span 6 / span 6;
-}
-
-.grid2 {
-  display: grid;
-  grid-column: span 1 / span 1;
-}
