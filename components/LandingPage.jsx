@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Home from "./Home";
 
 export default function LandingPage (props){
- 
 
   function ether() {
     const { ethereum } = window;
@@ -29,30 +28,12 @@ export default function LandingPage (props){
     }
   };
 
-  // const checkIfWalletIsConnected = async () => {
-  //   const eth = ether();
-
-  //   const accounts = await ethereum.request({ method: "eth_accounts" });
-
-  //   if (accounts.length !== 0) {
-  //     const account = accounts[0];
-  //     console.log("Found an authorized account:", account);
-  //     setUser(account);
-  //   } else {
-  //     console.log("No authorized account found");
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   checkIfWalletIsConnected();
-  // }, []);
-
   return (
     props.users === "" ?
     <div className="h-screen text-white bg-black items-center justify-center flex">
       <div className="flex justify-center items-center bg-transparent h-auto flex-col">
         <h1 className="text-white bg-transparent font-extrabold text-7xl text-center mb-2">
-          The web3<span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-pink-500 "><br></br> brain power</span> platform
+          The web3<span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-pink-500 to-white "><br></br> brain power</span> platform
         </h1>
         <h3 className="bg-transparent text-slate-300 text-center mt-1 p-4 text-xl font-medium ">
           A decentralized website where people can give answers<br className=""></br> to questions and get rewards.

@@ -64,10 +64,10 @@ export default function NavBar(props) {
   );
 
   return (
-    <nav className="w-full bg-transparent shadow">
+    <nav className="w-full bg-black">
       <div className="justify-between px-4 md:grid-cols-3 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
         <div>
-          <div className="flex items-center justify-between py-3 md:py-5 md:block">
+          <div className="flex items-center bg-black justify-between py-3 md:py-5 md:block">
             <Link href="/">
               <h2 className="bg-clip-text text-transparent text-3xl font-bold bg-gradient-to-r from-red-400 to-violet-400 ">
                 Brain Boost
@@ -118,25 +118,25 @@ export default function NavBar(props) {
             }`}
           >
             <ul className="items-center justify-center text-center space-y-8 md:flex md:space-x-6 md:space-y-0 text-lg font-bold ">
-              <li className="text-black hover:text-blue-600">
+              <li className="text-white hover:text-yellow-400">
                 <Link href="/">Home</Link>
               </li>
-              <li className="text-black hover:text-blue-600">
+              <li className="text-white hover:text-orange-600">
                 <Link href="/Ask-Question">Ask Question</Link>
               </li>
-              <li className="text-black hover:text-blue-600">
+              <li className="text-white hover:text-orange-600">
                 <Link href="/">Notes</Link>
               </li>
             </ul>
           </div>
         </div>
         <div
-          className="hidden space-x-2 md:inline-block"
+          className="hidden space-x-2 md:inline-block bg-black"
           onClick={connectWallet}
         >
           {props.users ? (
-            <div className="font-bold bg-black p-4 text-white rounded-2xl">
-              Wallet: {props.users.slice(0, 4)}...{props.users.slice(-4)}{" "}
+            <div className="font-bold bg-white p-4 text-black rounded-2xl">
+              {props.users.slice(0, 4)}...{props.users.slice(-4)}{" "}
             </div>
           ) : (
             <p></p>

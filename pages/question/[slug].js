@@ -3,7 +3,7 @@ import SDK from "weavedb-node-client";
 export async function getServerSideProps({ query }) {
   const db = new SDK({
     contractTxId: "sPyXyPDKw9uKFs43y7HFvsnKUE7bht3DkBNKA5UcV_o",
-    rpc: "localhost:9090",
+    rpc: "grpc.octulus.tk:8080",
   });
   return {
     props: {
