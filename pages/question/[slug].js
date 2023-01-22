@@ -14,12 +14,26 @@ export async function getServerSideProps({ query }) {
   };
 }
 
+let db;
+const contractTxId = "sPyXyPDKw9uKFs43y7HFvsnKUE7bht3DkBNKA5UcV_o";
+
 export default function Question({ question }) {
+
+  {/*
+  const addVote = async () => {
+    await db.update(
+      { "vote" : db.inc(1) },
+      "Questions",
+      "JiBhSWTiGkdELzJ8vGWF"
+    );
+  }
+  */}
+
   return (
     <div className="flex flex-col ml-10 text-white">
       <div className="text-5xl font-bold my-10">{question.title}</div>
       <div className="text-2xl mb-10">{question.question}</div>
-      <div className="">Vote : {question.vote}</div>
+      <div className="" >Vote : {question.vote}</div>
     </div>
   );
 }

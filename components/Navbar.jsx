@@ -19,8 +19,6 @@ export default function NavBar(props) {
       const accounts = await ethereum.request({
         method: "eth_requestAccounts",
       });
-
-      console.log("Connected", accounts[0]);
       props.setUsers(accounts[0]);
     } catch (error) {
       console.log(error);
@@ -41,7 +39,6 @@ export default function NavBar(props) {
 
     if (accounts.length !== 0) {
       const account = accounts[0];
-      console.log("Found an authorized account:", account);
       props.setUsers(account);
     } else {
       console.log("No authorized account found");
@@ -64,7 +61,7 @@ export default function NavBar(props) {
   );
 
   return (
-    <nav className="w-full bg-black">
+    <nav className="w-full ">
       <div className="justify-between px-4 md:grid-cols-3 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
         <div>
           <div className="flex items-center bg-black justify-between py-3 md:py-5 md:block">
@@ -118,13 +115,13 @@ export default function NavBar(props) {
             }`}
           >
             <ul className="items-center justify-center text-center space-y-8 md:flex md:space-x-6 md:space-y-0 text-lg font-bold ">
-              <li className="text-white hover:text-yellow-400">
+              <li className="hover:opacity-60 text-yellow-400">
                 <Link href="/">Home</Link>
               </li>
-              <li className="text-white hover:text-orange-600">
+              <li className="hover:opacity-60 text-yellow-400">
                 <Link href="/Ask-Question">Ask Question</Link>
               </li>
-              <li className="text-white hover:text-orange-600">
+              <li className="hover:opacity-60 text-yellow-400">
                 <Link href="/">Notes</Link>
               </li>
             </ul>
