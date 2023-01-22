@@ -42,7 +42,7 @@ const Home = () => {
 
   useEffect(() => {
       getQuestions();
-  });
+  }, []);
 
   const subjects = [{ id: 1, name: "Math" }, { id: 2, name: "Science" }, { id: 3, name: "English" }, { id: 4, name: "History" }, { id: 5, name: "Geography" }, { id: 6, name: "Computer Science" }, { id: 7, name: "Physics" }, { id: 8, name: "Chemistry" }, { id: 9, name: "Biology" }, { id: 10, name: "Economics" }, { id: 11, name: "Accounting" }, { id: 12, name: "Business" }, { id: 13, name: "Psychology" }]
   
@@ -75,13 +75,14 @@ const Home = () => {
             {map((v) => (
               <div className="flex flex-row p-4 border-b">
                 <div className="">
-                  {v && v.title?(<>{v.title}</>):(<> ( NO TITLE ) </>)}
+                  {v.data.title}
+                  {v && v.data && v.data.title?(<>{v.data.title}</>):(<> ( NO TITLE ) </>)}
                   
 
                 </div>
-                {(v && v.slug)? (<>
+                {(v && v.data && v.data.slug)? (<>
                 &nbsp; 
-                <Link href={`/question/${v.slug}`} className="flex justify-end">  
+                <Link href={`/question/${v.data.slug}`} className="flex justify-end">  
                   <div className="">
                     Answer
                   </div>
