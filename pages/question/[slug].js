@@ -18,7 +18,7 @@ export async function getServerSideProps({ query }) {
   return {
     props: {
       jsondata: JSON.stringify(questions),
-      question: questions[0] ,
+      question: questions[0]['data'] ,
     },
   };
 }
