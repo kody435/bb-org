@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 import { Buffer } from "buffer";
 import { map } from "ramda";
-import SDK from 'weavedb-sdk'
+// import SDK from 'weavedb-sdk'
+import WeaveDB from "weavedb-client";
+
 import Link from "next/link";
 import styles from "./common.module.css";
-import { key } from "localforage";
+// import { key } from "localforage";
+const contractTxId = "sPyXyPDKw9uKFs43y7HFvsnKUE7bht3DkBNKA5UcV_o";
 
 // const WeaveDB = require("weavedb-client")
   let db;
@@ -14,20 +17,23 @@ const Home = () => {
   const [initDB, setInitDB] = useState(false)
   
   const getQuestions = async () => {
-    {/*const db = async() => new WeaveDB({
-      contractTxId: "sPyXyPDKw9uKFs43y7HFvsnKUE7bht3DkBNKA5UcV_o",
-      rpc: "grpc.octulus.tk:8080" // gRPC node IP:port
-    })*/}
-    setQuestions(await db.cget("Questions", ["title"]));
+    // const questions = await db.cget("Questions", ["title"]);
+    const questions = await db.cget("Questions", 10);
+    console.log("questions: ", questions)
+    setQuestions(questions);
   };
   
 
   const setupWeaveDB = async () => {
     window.Buffer = Buffer;
-    db = new SDK({
-        contractTxId:"sPyXyPDKw9uKFs43y7HFvsnKUE7bht3DkBNKA5UcV_o"
-    })
-    await db.initializeWithoutWallet()
+    // db = new SDK({
+    //     contractTxId:"sPyXyPDKw9uKFs43y7HFvsnKUE7bht3DkBNKA5UcV_o"
+    // })
+    // await db.initializeWithoutWallet()
+    db = new WeaveDB({
+      contractTxId: contractTxId,
+      rpc: "https://lb.weavedb-node.xyz:443",
+    });
     setInitDB(true);
   };
   useEffect(() => {
@@ -69,13 +75,20 @@ const Home = () => {
             {map((v) => (
               <div className="flex flex-row p-4 border-b">
                 <div className="">
-                  {v.data.title}
+                  {v && v.title?(<>{v.title}</>):(<> ( NO TITLE ) </>)}
+                  
+
                 </div>
-                <Link href={`/question/${v.data.slug}`} className="flex justify-end">  
+                {(v && v.slug)? (<>
+                &nbsp; 
+                <Link href={`/question/${v.slug}`} className="flex justify-end">  
                   <div className="">
                     Answer
                   </div>
                 </Link>
+                </>):(<>
+                  (NO SLUG)
+                </>)}
               </div>
             ))(Questions)}
         </div>

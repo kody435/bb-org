@@ -1,39 +1,54 @@
 import SDK from "weavedb-node-client";
+// import WeaveDB from "weavedb-client";
+const contractTxId = "sPyXyPDKw9uKFs43y7HFvsnKUE7bht3DkBNKA5UcV_o";
 
 export async function getServerSideProps({ query }) {
   const db = new SDK({
-    contractTxId: "sPyXyPDKw9uKFs43y7HFvsnKUE7bht3DkBNKA5UcV_o",
-    rpc: "grpc.octulus.tk:8080",
+    contractTxId: contractTxId,
+    rpc: "lb.weavedb-node.xyz:443",
   });
+
+  // db = new WeaveDB({
+  //   contractTxId: contractTxId,
+  //   rpc: "https://lb.weavedb-node.xyz:443",
+  // });
+  
+  const questions = await db.get("Questions", ["slug"], ["slug", "=", query.slug])
+  // console.log("query.slug= ", query.slug)
   return {
     props: {
-      question: (
-        await db.get("Questions", ["slug"], ["slug", "=", query.slug])
-      )[0],
+      jsondata: JSON.stringify(questions),
+      question: questions[0] ,
     },
   };
 }
 
-let db;
-const contractTxId = "sPyXyPDKw9uKFs43y7HFvsnKUE7bht3DkBNKA5UcV_o";
 
-export default function Question({ question }) {
+export default function Question({ jsondata, question }) {
 
-  {/*
-  const addVote = async () => {
-    await db.update(
-      { "vote" : db.inc(1) },
-      "Questions",
-      "JiBhSWTiGkdELzJ8vGWF"
-    );
-  }
-  */}
+
+  
 
   return (
     <div className="flex flex-col ml-10 text-black">
-      <div className="text-5xl font-bold my-10">{question.title}</div>
-      <div className="text-2xl mb-10">{question.question}</div>
-      <div className="" >Vote : {question.vote}</div>
+      {/* {jsondata} */}
+      <div className="text-5xl font-bold my-10">
+      title: 
+      {question && question.title!=undefined?(<>{question.title}</>):(<>
+      </>)}
+      </div>
+      
+      <div className="text-2xl mb-10">
+      question: 
+      {question && question.question!=undefined?(<>{question.question}</>):(<>
+      </>)}
+      </div>
+      
+      <div className="" >Vote : 
+      
+      {question && question.vote!=undefined?(<>{question.vote}</>):(<>
+      </>)}
+      </div>
     </div>
   );
 }
