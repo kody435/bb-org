@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "../components/common.module.css";
-import SDK from "weavedb-sdk";
+// import SDK from "weavedb-sdk";
+import WeaveDB from "weavedb-client";
 
 
 let db;
@@ -18,11 +19,15 @@ export default function Ask_Ques(props) {
 
   const setupWeaveDB = async () => {
     window.Buffer = Buffer;
-    db = new SDK({
-        contractTxId
+    // db = new SDK({
+    //     contractTxId
+    // });
+    // await db.initializeWithoutWallet()
+    db = new WeaveDB({
+      contractTxId: contractTxId,
+      rpc: "https://lb.weavedb-node.xyz:443",
+      // rpc: "lb.weavedb-node.xyz:443",
     });
-    await db.initializeWithoutWallet()
-
     setInitDB(true);
   };
 
@@ -38,8 +43,11 @@ export default function Ask_Ques(props) {
       console.log("addQuestion");
       console.log(initDB);
       setLoading(true)
-      
-      await db.add({ title: titles, question: questions, user_address: props.users, slug: titles.split(" ").join("-").toLowerCase()}, "Questions")
+      try {
+       await db.add({ title: titles, question: questions, user_address: props.users, slug: titles.split(" ").join("-").toLowerCase()}, "Questions")
+      }catch(e) {
+        console.log(e.message)
+      }
       setLoading(false)
     
   };
