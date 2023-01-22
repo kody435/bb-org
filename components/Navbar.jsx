@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 
 export default function NavBar(props) {
+  
   const [navbar, setNavbar] = useState(false);
   const [user, setUser] = useState("");
 
