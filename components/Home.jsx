@@ -32,7 +32,7 @@ const Home = () => {
     // await db.initializeWithoutWallet()
     db = new WeaveDB({
       contractTxId: contractTxId,
-      rpc: "https://lb.weavedb-node.xyz:443",
+      rpc: "https://octulus.tk:8080",
     });
     setInitDB(true);
   };
