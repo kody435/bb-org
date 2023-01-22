@@ -3,6 +3,8 @@ import { Buffer } from "buffer";
 import { map } from "ramda";
 import SDK from 'weavedb-sdk'
 import Link from "next/link";
+import styles from "./common.module.css";
+import { key } from "localforage";
 
 // const WeaveDB = require("weavedb-client")
   let db;
@@ -36,26 +38,50 @@ const Home = () => {
       getQuestions();
   });
 
+  const subjects = [{ id: 1, name: "Math" }, { id: 2, name: "Science" }, { id: 3, name: "English" }, { id: 4, name: "History" }, { id: 5, name: "Geography" }, { id: 6, name: "Computer Science" }, { id: 7, name: "Physics" }, { id: 8, name: "Chemistry" }, { id: 9, name: "Biology" }, { id: 10, name: "Economics" }, { id: 11, name: "Accounting" }, { id: 12, name: "Business" }, { id: 13, name: "Psychology" }]
+  
   return (
-    <section className="">
-    <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
-      <div>
-        <h2 className="text-3xl  flex justify-center mb-5 text-blue-500">
-          Questions
+    <div className="lg:grid flex flex-col lg:grid-cols-10 mt-10 ">
+
+      {/* Subjects */}
+      <div className={styles.grid2}>
+        <h2 className="font-bold pl-4 mb-5 ">
+          Subjects
         </h2>
-      <div class="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 ">
-        {map((v) => (
-        <Link href={`/question/${v.data.slug}`}>
-        <div
-        class="flex border-4 border-white rounded-2xl p-8 justify-start items-center bg-white hover:bg-gradient-to-r from-cyan-500 to-blue-500">
-          <h2 class=" text-xl font-bold bg-transparent text-black">{v.data.title.slice(0, 32)}</h2>
+        <div className="pl-7">
+          {subjects.map((subjects, index) => (
+              <div key={index} className="mb-3 font-semibold">
+              <div className=''>{subjects.name}</div>
+              </div>
+          ))}
         </div>
-        </Link>
-        ))(Questions)}
       </div>
-      </div>
+      
+      {/* Question */}
+      <div className={styles.grid1}>
+        <div className="">
+        <div className="border-2 border-gray-200 rounded-t-3xl py-10 mr-10 pl-5" >
+          <h1 className="text-5xl font-extrabold flex mb-10">Get Answers for FREE</h1>
+          <Link href="/Ask-Question" className="bg-black text-white rounded-full py-3 px-8 ">ASK NOW!</Link>
+          </div>
+          
+        <div className="mb-5 border-2 border-t-0 border-gray-200 mr-10 ">
+            {map((v) => (
+              <div className="flex flex-row p-4 border-b">
+                <div className="">
+                  {v.data.title}
+                </div>
+                <Link href={`/question/${v.data.slug}`} className="flex justify-end">  
+                  <div className="">
+                    Answer
+                  </div>
+                </Link>
+              </div>
+            ))(Questions)}
+        </div>
+        </div>
+        </div>
     </div>
-    </section>
   );
 };
   

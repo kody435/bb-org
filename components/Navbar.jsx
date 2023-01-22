@@ -61,10 +61,10 @@ export default function NavBar(props) {
   );
 
   return (
-    <nav className="w-full ">
+    <nav className="w-full border-b-2 border-slate-300">
       <div className="justify-between px-4 md:grid-cols-3 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
         <div>
-          <div className="flex items-center bg-black justify-between py-3 md:py-5 md:block">
+          <div className="flex items-center  justify-between py-3 md:py-5 md:block">
             <Link href="/">
               <h2 className="bg-clip-text text-transparent text-3xl font-bold bg-gradient-to-r from-red-400 to-violet-400 ">
                 Brain Boost
@@ -128,12 +128,12 @@ export default function NavBar(props) {
           </div>
         </div>
         <div
-          className="hidden space-x-2 md:inline-block bg-black"
+          className="hidden space-x-2 md:inline-block "
           onClick={connectWallet}
         >
           {props.users ? (
-            <div className="font-bold bg-white p-4 text-black rounded-2xl">
-              {props.users.slice(0, 4)}...{props.users.slice(-4)}{" "}
+            <div className="font-bold bg-black p-4 text-white rounded-2xl">
+              {props.users.slice(0, 5)}...{props.users.slice(-5)}{" "}
             </div>
           ) : (
             <p></p>
