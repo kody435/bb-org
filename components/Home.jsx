@@ -10,7 +10,7 @@ import styles from "./common.module.css";
 const contractTxId = "sPyXyPDKw9uKFs43y7HFvsnKUE7bht3DkBNKA5UcV_o";
 
 // const WeaveDB = require("weavedb-client")
-  let db;
+let db;
 
 const Home = () => {
   const [Questions, setQuestions] = useState([]);
@@ -18,18 +18,13 @@ const Home = () => {
   
   const getQuestions = async () => {
     // const questions = await db.cget("Questions", ["title"]);
-    const questions = await db.cget("Questions", 10);
+    const questions = await db.cget("Questions");
     console.log("questions: ", questions)
     setQuestions(questions);
   };
   
 
   const setupWeaveDB = async () => {
-    window.Buffer = Buffer;
-    // db = new SDK({
-    //     contractTxId:"sPyXyPDKw9uKFs43y7HFvsnKUE7bht3DkBNKA5UcV_o"
-    // })
-    // await db.initializeWithoutWallet()
     db = new WeaveDB({
       contractTxId: contractTxId,
       rpc: "https://lb.weavedb-node.xyz:443",
@@ -42,7 +37,7 @@ const Home = () => {
 
   useEffect(() => {
       getQuestions();
-  });
+  }, []);
 
   const subjects = [{ id: 1, name: "Math" }, { id: 2, name: "Science" }, { id: 3, name: "English" }, { id: 4, name: "History" }, { id: 5, name: "Geography" }, { id: 6, name: "Computer Science" }, { id: 7, name: "Physics" }, { id: 8, name: "Chemistry" }, { id: 9, name: "Biology" }, { id: 10, name: "Economics" }, { id: 11, name: "Accounting" }, { id: 12, name: "Business" }, { id: 13, name: "Psychology" }]
   
@@ -67,28 +62,22 @@ const Home = () => {
       <div className={styles.grid1}>
         <div className="">
         <div className="border-2 border-gray-200 rounded-t-3xl py-10 mr-10 pl-5" >
-          <h1 className="text-5xl font-extrabold flex mb-10">Get Answers for FREE</h1>
-          <Link href="/Ask-Question" className="bg-black text-white rounded-full py-3 px-8 ">ASK NOW!</Link>
+          <h1 className="text-5xl font-extrabold flex mb-10">Have Questions 🤔?</h1>
+          <Link href="/Ask-Question" className="bg-black border-2 border-black text-white rounded-full py-4 px-8 font-bold hover:bg-white hover:text-black">ASK NOW!</Link>
           </div>
           
-        <div className="mb-5 border-2 border-t-0 border-gray-200 mr-10 ">
+        <div className="border-2 border-y-0 border-gray-200 mr-10 ">
             {map((v) => (
-              <div className="flex flex-row p-4 border-b">
-                <div className="">
-                  {v && v.title?(<>{v.title}</>):(<> ( NO TITLE ) </>)}
-                  
-
+              <div className="flex flex-col p-4 border-b items-start">
+                <div className="flex items-start">
+                  {v.data.title}
                 </div>
-                {(v && v.slug)? (<>
-                &nbsp; 
-                <Link href={`/question/${v.slug}`} className="flex justify-end">  
-                  <div className="">
+
+                <Link href={`/question/${v.data.slug}`} className="flex items-end">  
+                  <div className="font-bold mt-2 px-3 py-1 border-2 border-black hover:bg-black hover:text-white rounded-full  ">
                     Answer
                   </div>
                 </Link>
-                </>):(<>
-                  (NO SLUG)
-                </>)}
               </div>
             ))(Questions)}
         </div>

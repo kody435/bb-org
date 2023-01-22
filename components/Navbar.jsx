@@ -115,13 +115,13 @@ export default function NavBar(props) {
             }`}
           >
             <ul className="items-center justify-center text-center space-y-8 md:flex md:space-x-6 md:space-y-0 text-lg font-bold ">
-              <li className="hover:opacity-60 text-yellow-400">
+              <li className="hover:bg-blue-500 text-black">
                 <Link href="/">Home</Link>
               </li>
-              <li className="hover:opacity-60 text-yellow-400">
+              <li className="hover:bg-blue-500 text-black">
                 <Link href="/Ask-Question">Ask Question</Link>
               </li>
-              <li className="hover:opacity-60 text-yellow-400">
+              <li className="hover:bg-blue-500 text-black">
                 <Link href="/">Notes</Link>
               </li>
             </ul>
