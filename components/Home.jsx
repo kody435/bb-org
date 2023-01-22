@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Buffer } from "buffer";
 import { map } from "ramda";
-// import SDK from 'weavedb-sdk'
+import SDK from 'weavedb-sdk'
 import WeaveDB from "weavedb-client";
 
 import Link from "next/link";
@@ -15,20 +15,14 @@ let db;
 const Home = () => {
   const [Questions, setQuestions] = useState([]);
   const [initDB, setInitDB] = useState(false)
-  
-  const getQuestions = async () => {
-    // const questions = await db.cget("Questions", ["title"]);
-    const questions = await db.cget("Questions");
-    console.log("questions: ", questions)
-    setQuestions(questions);
-  };
-  
 
   const setupWeaveDB = async () => {
-    db = new WeaveDB({
-      contractTxId: contractTxId,
-      rpc: "https://lb.weavedb-node.xyz:443",
-    });
+    window.Buffer = Buffer;
+    db = new SDK({
+        contractTxId
+    })
+    await db.initializeWithoutWallet()
+
     setInitDB(true);
   };
   useEffect(() => {
@@ -36,8 +30,14 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
+    if (initDB) {
       getQuestions();
-  }, []);
+    }
+  }, [initDB]);
+  
+  const getQuestions = async () => {
+    setQuestions(await db.cget("Questions", ["title"]));
+  };
 
   const subjects = [{ id: 1, name: "Math" }, { id: 2, name: "Science" }, { id: 3, name: "English" }, { id: 4, name: "History" }, { id: 5, name: "Geography" }, { id: 6, name: "Computer Science" }, { id: 7, name: "Physics" }, { id: 8, name: "Chemistry" }, { id: 9, name: "Biology" }, { id: 10, name: "Economics" }, { id: 11, name: "Accounting" }, { id: 12, name: "Business" }, { id: 13, name: "Psychology" }]
   
@@ -62,7 +62,7 @@ const Home = () => {
       <div className={styles.grid1}>
         <div className="">
         <div className="border-2 border-gray-200 rounded-t-3xl py-10 mr-10 pl-5" >
-          <h1 className="text-5xl font-extrabold flex mb-10">Have Questions 🤔?</h1>
+          <h1 className="text-5xl font-extrabold flex mb-10">Have Questions ?</h1>
           <Link href="/Ask-Question" className="bg-black border-2 border-black text-white rounded-full py-4 px-8 font-bold hover:bg-white hover:text-black">ASK NOW!</Link>
           </div>
           

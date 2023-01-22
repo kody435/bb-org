@@ -95,7 +95,7 @@ export default function Ask_Ques(props) {
                 </tr>
               </div>
               <div
-                className="w-fit flex items-center justify-center font-bold py-5 text-center px-12 rounded-full border-2 border-white hover:bg-black hover:border-blue-700 bg-white text-black hover:text-white duration-700"
+                className="w-fit flex items-center justify-center font-bold py-5 text-center px-12 rounded-full border-2 border-black duration-700 hover:bg-black hover:text-white "
                 onClick={addQuestion}
                 disabled={loading}
               >
