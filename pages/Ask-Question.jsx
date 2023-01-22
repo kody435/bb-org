@@ -3,19 +3,16 @@ import styles from "../components/common.module.css";
 // import SDK from "weavedb-sdk";
 import WeaveDB from "weavedb-client";
 
-
 let db;
-const contractTxId= "sPyXyPDKw9uKFs43y7HFvsnKUE7bht3DkBNKA5UcV_o" 
+const contractTxId = "sPyXyPDKw9uKFs43y7HFvsnKUE7bht3DkBNKA5UcV_o";
 
 export default function Ask_Ques(props) {
-  console.log("Users in Ask_Ques:", props.users)
-  
+  console.log("Users in Ask_Ques:", props.users);
+
   const [titles, setTitles] = useState("");
   const [questions, setQuestions] = useState("");
   const [loading, setLoading] = useState(true);
-  const [initDB, setInitDB] = useState(false)
-
-
+  const [initDB, setInitDB] = useState(false);
 
   const setupWeaveDB = async () => {
     window.Buffer = Buffer;
@@ -36,24 +33,31 @@ export default function Ask_Ques(props) {
     console.log("Questions useEffect ran ", db);
   }, []);
 
-  
- 
   const addQuestion = async (e) => {
-    
-      console.log("addQuestion");
-      console.log(initDB);
-      setLoading(true)
-      try {
-       await db.add({ title: titles, question: questions, user_address: props.users, slug: titles.split(" ").join("-").toLowerCase()}, "Questions")
-      }catch(e) {
-        console.log(e.message)
-      }
-      setLoading(false)
-    
+    console.log("addQuestion");
+    console.log(initDB);
+    setLoading(true);
+    try {
+      await db.add(
+        {
+          title: titles,
+          question: questions,
+          user_address: props.users,
+          slug: titles.split(" ").join("-").toLowerCase(),
+        },
+        "Questions"
+      );
+    } catch (e) {
+      console.log(e.message);
+    }
+    setLoading(false);
   };
 
-  return (
-    props.users === "" ? <h1 className="bg-gradient-to-r from-indigo-400 via-blue-400 to-white text-black text-center flex h-screen justify-center items-center font-semibold text-5xl">Pls go to Home page and Login to Metamask</h1>:
+  return props.users === "" ? (
+    <h1 className="bg-gradient-to-r from-indigo-400 via-blue-400 to-white text-black text-center flex h-screen justify-center items-center font-semibold text-5xl">
+      Pls go to Home page and Login to Metamask
+    </h1>
+  ) : (
     <div className={styles.quest}>
       <title>Brain Boost</title>
       <div className="bg-gradient-to-bl from-sky-500 to-indigo-600 w-screen h-screen">
@@ -107,6 +111,4 @@ export default function Ask_Ques(props) {
       </div>
     </div>
   );
-};
-
-
+}
