@@ -68,12 +68,13 @@ const Home = () => {
           
         <div className="border-2 border-y-0 border-gray-200 mr-10 ">
             {map((v) => (
-              <div className="flex flex-row p-4 border-b items-center">
-                <div className="">
+              <div className="flex flex-col p-4 border-b items-start">
+                <div className="flex items-start">
                   {v.data.title}
                 </div>
-                <Link href={`/question/${v.data.slug}`} className="flex justify-end">  
-                  <div className="font-bold mx-5 px-6 py-2 border-2 border-black hover:bg-black hover:text-white rounded-full  ">
+
+                <Link href={`/question/${v.data.slug}`} className="flex items-end">  
+                  <div className="font-bold mt-2 px-3 py-1 border-2 border-black hover:bg-black hover:text-white rounded-full  ">
                     Answer
                   </div>
                 </Link>
