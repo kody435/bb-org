@@ -18,11 +18,14 @@ const Home = () => {
 
   const setupWeaveDB = async () => {
     window.Buffer = Buffer;
+    // db = new SDK({
+    //     contractTxId:"sPyXyPDKw9uKFs43y7HFvsnKUE7bht3DkBNKA5UcV_o"
+    // })
+    // await db.initializeWithoutWallet()
     db = new SDK({
-        contractTxId
-    })
-    await db.initializeWithoutWallet()
-
+      contractTxId: contractTxId,
+      rpc: "https://grpc.octulus.tk",
+    });
     setInitDB(true);
   };
   useEffect(() => {
