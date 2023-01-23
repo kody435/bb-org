@@ -9,7 +9,7 @@ import styles from "./common.module.css";
 // import { key } from "localforage";
 const contractTxId = "sPyXyPDKw9uKFs43y7HFvsnKUE7bht3DkBNKA5UcV_o";
 
-// const WeaveDB = require("weavedb-client")
+//const WeaveDB = require("weavedb-client")
 let db;
 
 const Home = () => {
@@ -22,7 +22,7 @@ const Home = () => {
     //     contractTxId:"sPyXyPDKw9uKFs43y7HFvsnKUE7bht3DkBNKA5UcV_o"
     // })
     // await db.initializeWithoutWallet()
-    db = new SDK({
+    const db = new WeaveDB({
       contractTxId: contractTxId,
       rpc: "https://grpc.octulus.tk",
     });
