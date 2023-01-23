@@ -1,39 +1,30 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "../components/common.module.css";
-// import SDK from "weavedb-sdk";
-import WeaveDB from "weavedb-client";
+import SDK from "weavedb-sdk";
+import Link from "next/link";
 
 
 let db;
 const contractTxId= "sPyXyPDKw9uKFs43y7HFvsnKUE7bht3DkBNKA5UcV_o" 
 
 export default function Ask_Ques(props) {
-  console.log("Users in Ask_Ques:", props.users)
   
   const [titles, setTitles] = useState("");
   const [questions, setQuestions] = useState("");
-  const [loading, setLoading] = useState(true);
   const [initDB, setInitDB] = useState(false)
-
 
 
   const setupWeaveDB = async () => {
     window.Buffer = Buffer;
-    // db = new SDK({
-    //     contractTxId
-    // });
-    // await db.initializeWithoutWallet()
-    db = new WeaveDB({
-      contractTxId: contractTxId,
-      rpc: "https://lb.weavedb-node.xyz:443",
-      // rpc: "lb.weavedb-node.xyz:443",
+    db = new SDK({
+      contractTxId,
     });
+    await db.initializeWithoutWallet();
     setInitDB(true);
   };
 
   useEffect(() => {
     setupWeaveDB();
-    console.log("Questions useEffect ran ", db);
   }, []);
 
   
@@ -42,18 +33,16 @@ export default function Ask_Ques(props) {
     
       console.log("addQuestion");
       console.log(initDB);
-      setLoading(true)
       try {
-       await db.add({ title: titles, question: questions, user_address: props.users, slug: titles.split(" ").join("-").toLowerCase()}, "Questions")
+       await db.add({ title: titles, question: questions,vote:0, user_address: props.users, slug: titles.split(" ").join("-").toLowerCase()}, "Questions")
       }catch(e) {
         console.log(e.message)
       }
-      setLoading(false)
     
   };
 
   return (
-    props.users === "" ? <h1 className="bg-gradient-to-r from-indigo-400 via-blue-400 to-white text-black text-center flex h-screen justify-center items-center font-semibold text-5xl">Pls go to Home page and Login to Metamask</h1>:
+    props.users === "" ? <div className="p-10 flex flex-col h-screen w-screen justify-center items-center bg-gradient-to-r from-indigo-400 via-blue-400 to-white text-center"><h1 className="bg-transparent text-black font-semibold text-3xl lg:text-5xl mb-10">Pls go to Home page and Login to Metamask</h1><Link href="/" className="bg-white rounded-xl font-bold text-xl mt-10 px-14 py-2 hover:bg-black hover:text-white">Home ↗️</Link></div>:
     <div className={styles.quest}>
       <title>Brain Boost</title>
       <div className="bg-gradient-to-bl from-sky-500 to-indigo-600 w-screen h-screen">
@@ -97,7 +86,6 @@ export default function Ask_Ques(props) {
               <div
                 className="w-fit flex items-center justify-center font-bold py-5 text-center px-12 rounded-full border-2 border-black duration-700 hover:bg-black hover:text-white "
                 onClick={addQuestion}
-                disabled={loading}
               >
                 SUBMIT
               </div>

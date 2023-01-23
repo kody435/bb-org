@@ -4,16 +4,14 @@ const contractTxId = "sPyXyPDKw9uKFs43y7HFvsnKUE7bht3DkBNKA5UcV_o";
 
 export async function getServerSideProps({ query }) {
   const db = new SDK({
-    contractTxId: contractTxId,
-    rpc: "lb.weavedb-node.xyz:443",
+    contractTxId: "sPyXyPDKw9uKFs43y7HFvsnKUE7bht3DkBNKA5UcV_o",
+    rpc: "localhost:8080",
   });
-  
-  const questions = await db.get("Questions", ["slug"], ["slug", "=", query.slug])
-  // console.log("query.slug= ", query.slug)
   return {
     props: {
-      jsondata: JSON.stringify(questions),
-      question: questions[0]['data'] ,
+      question: (
+        await db.get("Questions", ["slug"], ["slug", "=", query.slug])
+      )[0],
     },
   };
 }
