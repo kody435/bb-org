@@ -132,7 +132,7 @@ export default function NavBar(props) {
           onClick={connectWallet}
         >
           {props.users ? (
-            <div className="font-bold bg-black p-4 text-white rounded-2xl">
+            <div className="font-bold bg-black p-4 text-yellow-400 rounded-2xl">
               {props.users.slice(0, 5)}...{props.users.slice(-5)}{" "}
             </div>
           ) : (

@@ -18,7 +18,7 @@ export default function Ask_Ques(props) {
   const setupWeaveDB = async () => {
     window.Buffer = Buffer;
     db = new SDK({
-         contractTxId:"sPyXyPDKw9uKFs43y7HFvsnKUE7bht3DkBNKA5UcV_o"
+      contractTxId: contractTxId,
     })
     await db.initializeWithoutWallet()
     setInitDB(true);
@@ -28,18 +28,9 @@ export default function Ask_Ques(props) {
     setupWeaveDB();
   }, []);
 
-  
  
-  const addQuestion = async (e) => {
-    
-      console.log("addQuestion");
-      console.log(initDB);
-      try {
+  const addQuestion = async () => {
        await db.add({ title: titles, question: questions,vote:0, user_address: props.users, slug: titles.split(" ").join("-").toLowerCase()}, "Questions")
-      }catch(e) {
-        console.log(e.message)
-      }
-    
   };
 
   return (
