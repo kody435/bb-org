@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import styles from "../components/common.module.css";
 import SDK from "weavedb-sdk";
 import Link from "next/link";
+import WeaveDB from "weavedb-sdk";
 
 
 let db;
@@ -17,9 +18,9 @@ export default function Ask_Ques(props) {
   const setupWeaveDB = async () => {
     window.Buffer = Buffer;
     db = new SDK({
-      contractTxId,
-    });
-    await db.initializeWithoutWallet();
+         contractTxId:"sPyXyPDKw9uKFs43y7HFvsnKUE7bht3DkBNKA5UcV_o"
+    })
+    await db.initializeWithoutWallet()
     setInitDB(true);
   };
 

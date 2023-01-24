@@ -3,14 +3,13 @@ import { Buffer } from "buffer";
 import { map } from "ramda";
 import SDK from 'weavedb-sdk'
 import WeaveDB from "weavedb-client";
-
 import Link from "next/link";
 import styles from "./common.module.css";
-// import { key } from "localforage";
-const contractTxId = "sPyXyPDKw9uKFs43y7HFvsnKUE7bht3DkBNKA5UcV_o";
 
-//const WeaveDB = require("weavedb-client")
+
+const contractTxId = "sPyXyPDKw9uKFs43y7HFvsnKUE7bht3DkBNKA5UcV_o";
 let db;
+
 
 const Home = () => {
   const [Questions, setQuestions] = useState([]);
@@ -18,14 +17,17 @@ const Home = () => {
 
   const setupWeaveDB = async () => {
     window.Buffer = Buffer;
-    // db = new SDK({
-    //     contractTxId:"sPyXyPDKw9uKFs43y7HFvsnKUE7bht3DkBNKA5UcV_o"
-    // })
-    // await db.initializeWithoutWallet()
-    const db = new WeaveDB({
-      contractTxId: contractTxId,
-      rpc: "https://grpc.octulus.tk",
+  
+    db = new WeaveDB({
+        contractTxId: contractTxId,
+        rpc: "https://grpc.asteroid.ac:443",
     });
+    {/*
+    db = new SDK({
+         contractTxId:"sPyXyPDKw9uKFs43y7HFvsnKUE7bht3DkBNKA5UcV_o"
+    })
+    await db.initializeWithoutWallet()
+    */}
     setInitDB(true);
   };
   useEffect(() => {
@@ -39,7 +41,7 @@ const Home = () => {
   }, [initDB]);
   
   const getQuestions = async () => {
-    setQuestions(await db.cget("Questions", ["title"]));
+    setQuestions(await db.cget("Questions",["title"],true));
   };
 
   const subjects = [{ id: 1, name: "Math" }, { id: 2, name: "Science" }, { id: 3, name: "English" }, { id: 4, name: "History" }, { id: 5, name: "Geography" }, { id: 6, name: "Computer Science" }, { id: 7, name: "Physics" }, { id: 8, name: "Chemistry" }, { id: 9, name: "Biology" }, { id: 10, name: "Economics" }, { id: 11, name: "Accounting" }, { id: 12, name: "Business" }, { id: 13, name: "Psychology" }]
