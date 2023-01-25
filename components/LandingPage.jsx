@@ -36,7 +36,7 @@ export default function LandingPage (props){
           The web3<span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-pink-500 to-white "><br></br> brain power</span> platform
         </h1>
         <h3 className="bg-transparent text-slate-300 text-center mt-1 p-4 text-xl font-medium ">
-          A decentralized website where people can give answers<br className=""></br> to questions and get rewards.
+          A Web3 blockchain based platform, helps people <br></br>unlock the power of knowledge through community-sourced answers.
         </h3>
         <button
           className="text-black font-semibold mt-24 bg-white px-7 py-4 rounded-full text-md md:text-xl hover:bg-blue-600 transition ease-in duration-300 hover:text-white"
