@@ -17,17 +17,17 @@ const Home = () => {
 
   const setupWeaveDB = async () => {
     window.Buffer = Buffer;
-    
+    {/*
     db = new WeaveDB({
         contractTxId: contractTxId,
         rpc: "https://grpc.asteroid.ac:443",
     });
-    {/*
+    */}
     db = new SDK({
          contractTxId:"sPyXyPDKw9uKFs43y7HFvsnKUE7bht3DkBNKA5UcV_o"
     })
     await db.initializeWithoutWallet()
-    */}
+    
     setInitDB(true);
   };
   useEffect(() => {
@@ -66,9 +66,9 @@ const Home = () => {
       {/* Question */}
       <div className={styles.grid1}>
         <div className="">
-        <div className="border-2 border-gray-200 rounded-t-3xl py-10 mr-10 pl-5" >
-          <h1 className="text-5xl font-extrabold flex mb-10">Have Questions ?</h1>
-          <Link href="/Ask-Question" className="bg-black border-2 border-black text-yellow-400 rounded-full py-4 px-8 font-bold hover:bg-white hover:text-black">ASK NOW!</Link>
+        <div className="border-2 bg-gradient-to-l from-cyan-500 to-blue-500 border-gray-200 rounded-t-3xl py-10 mr-10 pl-5" >
+          <h1 className="text-5xl bg-transparent text-white font-extrabold flex mb-10">Have Questions ?</h1>
+          <Link href="/Ask-Question" className="bg-black border-2 border-black text-yellow-400 rounded-full py-3 px-7 text-xl font-bold hover:bg-white hover:text-black">ASK NOW!</Link>
           </div>
           
         <div className="border-2 border-y-0 border-gray-200 mr-10 ">
