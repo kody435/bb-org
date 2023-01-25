@@ -5,7 +5,7 @@ const contractTxId = "sPyXyPDKw9uKFs43y7HFvsnKUE7bht3DkBNKA5UcV_o";
 export async function getServerSideProps({ query }) {
   let db = new SDK({
     contractTxId: "sPyXyPDKw9uKFs43y7HFvsnKUE7bht3DkBNKA5UcV_o",
-    rpc: "https://lb.weavedb-node.xyz:443",
+    rpc: "grpc.asteroid.ac:443",
   });
 
   const questions = await db.get(
@@ -17,7 +17,7 @@ export async function getServerSideProps({ query }) {
   return {
     props: {
       jsondata: JSON.stringify(questions),
-      question: questions[0]["data"],
+      question: questions[0],
     },
   };
 }
