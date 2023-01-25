@@ -21,7 +21,7 @@ export default function NavBar(props) {
       });
       props.setUsers(accounts[0]);
     } catch (error) {
-      console.log(error);
+      alert(error);
     }
   };
 
@@ -29,7 +29,7 @@ export default function NavBar(props) {
     const { ethereum } = window;
 
     if (!ethereum) {
-      console.log("Make sure you have metamask!");
+      alert("Make sure you have metamask!");
       return;
     } else {
       console.log("We have the ethereum object", ethereum);
@@ -41,7 +41,7 @@ export default function NavBar(props) {
       const account = accounts[0];
       props.setUsers(account);
     } else {
-      console.log("No authorized account found");
+      alert("No authorized account found");
     }
   };
 

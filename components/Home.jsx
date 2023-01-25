@@ -20,7 +20,7 @@ const Home = () => {
     
     db = new WeaveDB({
         contractTxId: contractTxId,
-        rpc: "https://grpc.asteroid.ac:443",
+        rpc: "https://lb.weavedb-node.xyz:443",
     });
     {/*
     db = new SDK({
