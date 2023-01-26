@@ -9,14 +9,15 @@ export default function LandingPage (props){
     if (ethereum) {
       return ethereum;
     } else {
-      console.log("There was an error fetching metamask object");
+      console.log("No ethereum object found, please install MetaMask!")
+      return;
     }
   }
 
   const connectWallet = async () => {
     try {
       const eth = ether();
-
+      
       const accounts = await eth.request({
         method: "eth_requestAccounts",
       });
@@ -26,6 +27,7 @@ export default function LandingPage (props){
     } catch (error) {
       console.log(error);
     }
+
   };
 
   return (

@@ -18,7 +18,8 @@ export default function MyApp({ Component, pageProps, myProp }) {
     if (ethereum) {
         return ethereum;
     } else {  
-      throw new Error("There was an error fetching metamask object");
+      console.log("No ethereum object found, please install MetaMask")
+      return; 
     }
   }
 
@@ -26,6 +27,7 @@ export default function MyApp({ Component, pageProps, myProp }) {
   const getCurrentWalletConnected = async () => {
     const eth = ether();
     
+    if (eth) {
     const accountsArray = await eth.request({ method: "eth_accounts" });
 
     if (accountsArray.length > 0) {
@@ -33,11 +35,13 @@ export default function MyApp({ Component, pageProps, myProp }) {
     } else {
       setUser("")
     }
+    }
   };
 
   function walletListener() {
     const ethereum = ether();
 
+    if(ethereum){
     ethereum.on("accountsChanged", function (accounts) {
         if (accounts.length > 0) {
             setUser(accounts[0]);
@@ -52,6 +56,7 @@ export default function MyApp({ Component, pageProps, myProp }) {
         setUser("");
         
       });
+    }
   }
 
 
