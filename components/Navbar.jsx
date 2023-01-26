@@ -1,4 +1,5 @@
-import { ethers } from "ethers";
+
+import { useTheme } from "next-themes";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 
@@ -6,6 +7,14 @@ export default function NavBar(props) {
   
   const [navbar, setNavbar] = useState(false);
   const [user, setUser] = useState("");
+  
+  // I am using NextJS built in themes to change the theme
+  // The useTheme hook is used to get the current theme and set the theme
+  const { theme, setTheme } = useTheme()
+
+  
+
+  
 
   const connectWallet = async () => {
     try {
@@ -48,6 +57,7 @@ export default function NavBar(props) {
   useEffect(() => {
     checkIfWalletIsConnected();
   }, []);
+
 
   const renderNotConnectedContainer = () => (
     <div className="connect-container">
@@ -124,6 +134,8 @@ export default function NavBar(props) {
               <li className="hover:bg-blue-500 text-black">
                 <Link href="/">Notes</Link>
               </li>
+              <li ><button onClick={() => setTheme('light')}>Light Mode/ </button>
+              <button onClick={() => setTheme('dark')}>Dark Mode</button></li>
             </ul>
           </div>
         </div>

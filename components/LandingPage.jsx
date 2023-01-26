@@ -30,7 +30,7 @@ export default function LandingPage (props){
 
   return (
     props.users === "" ?
-    <div className="h-screen text-white bg-black items-center justify-center flex">
+    <div className="h-screen text-white items-center justify-center flex">
       <div className="flex justify-center items-center bg-transparent h-auto flex-col">
         <h1 className="text-white bg-transparent font-extrabold text-7xl text-center mb-2">
           The web3<span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-pink-500 to-white "><br></br> brain power</span> platform
