@@ -25,9 +25,9 @@ export async function getServerSideProps({ query }) {
 export default function Question({ question }) {
   return (
     <div className="flex flex-col ml-10 text-black">
-      <div className="text-5xl font-bold my-10">{question.title}</div>
-      <div className="text-2xl mb-20">{question.question}</div>
-      <div className="px-7 py-3 font-bold text-xl rounded-full text-white bg-gradient-to-r from-indigo-500 to-red-500 max-w-fit ">
+      <div className="text-4xl font-bold mt-10 mb-4">{question.title}</div>
+      <div className="text-2xl font-medium mb-20">{question.question}</div>
+      <div className="px-7 py-3 font-extrabold text-lg rounded-full text-white bg-gradient-to-r from-indigo-500 to-red-500 max-w-fit ">
         Vote : {question.vote}
       </div>
     </div>
