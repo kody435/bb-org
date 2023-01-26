@@ -37,7 +37,7 @@ export default function Ask_Ques(props) {
     props.users === "" ? <div className="p-10 flex flex-col h-screen w-screen justify-center items-center bg-gradient-to-r from-indigo-400 via-blue-400 to-white text-center"><h1 className="bg-transparent text-black font-semibold text-3xl lg:text-5xl mb-10">Pls go to Home page and Login to Metamask</h1><Link href="/" className="bg-white rounded-xl font-bold text-xl mt-10 px-14 py-2 hover:bg-black hover:text-white">Home ↗️</Link></div>:
     <div className={styles.quest}>
       <title>Brain Boost</title>
-      <div className="bg-gradient-to-bl from-sky-500 to-indigo-600 w-screen h-screen">
+      <div className=" from-sky-500 to-indigo-600 w-screen h-screen">
         <div className="flex flex-col items-center justify-center h-screen">
           <h1 className="text-center items-center text-3xl  bg-clip-text text-transparent bg-gradient-to-l from-green-600 to-blue-500 ">
             Submit question here

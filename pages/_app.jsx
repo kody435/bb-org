@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import { Analytics } from "@vercel/analytics/react";
 import React, { useState, useEffect} from "react";
 import SDK from "weavedb-sdk";
+import { ThemeProvider } from "next-themes";
 
 
 export default function MyApp({ Component, pageProps, myProp }) {
@@ -17,7 +18,8 @@ export default function MyApp({ Component, pageProps, myProp }) {
     if (ethereum) {
         return ethereum;
     } else {  
-      console.log("There was an error fetching metamask object");
+      console.log("No ethereum object found, please install MetaMask")
+      return; 
     }
   }
 
@@ -25,6 +27,7 @@ export default function MyApp({ Component, pageProps, myProp }) {
   const getCurrentWalletConnected = async () => {
     const eth = ether();
     
+    if (eth) {
     const accountsArray = await eth.request({ method: "eth_accounts" });
 
     if (accountsArray.length > 0) {
@@ -32,11 +35,13 @@ export default function MyApp({ Component, pageProps, myProp }) {
     } else {
       setUser("")
     }
+    }
   };
 
   function walletListener() {
     const ethereum = ether();
 
+    if(ethereum){
     ethereum.on("accountsChanged", function (accounts) {
         if (accounts.length > 0) {
             setUser(accounts[0]);
@@ -51,6 +56,7 @@ export default function MyApp({ Component, pageProps, myProp }) {
         setUser("");
         
       });
+    }
   }
 
 
@@ -64,7 +70,7 @@ export default function MyApp({ Component, pageProps, myProp }) {
   }, []);
   
   return (
-    <>
+    <ThemeProvider class="class">
       {user !== "" && <Navbar 
         users={user}
         setUsers={setUser}
@@ -78,7 +84,7 @@ export default function MyApp({ Component, pageProps, myProp }) {
         
       />
       <Analytics />
-    </>
+    </ThemeProvider>
   );
 }
 
