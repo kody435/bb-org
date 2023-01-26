@@ -9,7 +9,7 @@ export default function LandingPage (props){
     if (ethereum) {
       return ethereum;
     } else {
-      throw new Error("There was an error fetching metamask object");
+      console.log("There was an error fetching metamask object");
     }
   }
 
