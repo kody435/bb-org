@@ -8,6 +8,7 @@
 }
 
 .grid2 {
+  padding-left: 10px;
   display: grid;
   grid-column: span 2 / span 2;
 }

@@ -50,11 +50,11 @@ export default function Ask_Ques(props) {
                   <td className="rounded-2xl">
                     <input
                       type="text"
-                      className="text-xl w-56 lg:w-80 rounded-3xl px-4 py-2 bg-white"
+                      className="text-xl w-56 lg:w-80 rounded-3xl px-4 py-2 bg-white border-2 border-gray-400"
                       placeholder="Write the shortest title as per question"
                       value={titles}
-                      onChange={(e) => {
-                        setTitles(e.target.value);
+                      onChange={(event) => {
+                        setTitles(event.target.value);
                       }}
                     />
                   </td>
@@ -65,7 +65,7 @@ export default function Ask_Ques(props) {
                   <td className="rounded-3xl text-xl">
                     <textarea
                       type="text"
-                      className="w-full lg:w-80 rounded-2xl px-4 py-2 bg-white"
+                      className="w-full lg:w-80 rounded-2xl px-4 py-2 bg-white border-2 border-gray-400"
                       placeholder="Explain the whole question in detail here"
                       value={questions}
                       onChange={(e) => {
