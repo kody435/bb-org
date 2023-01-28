@@ -7,7 +7,7 @@ import Link from "next/link";
 import styles from "./common.module.css";
 
 
-const contractTxId = "sPyXyPDKw9uKFs43y7HFvsnKUE7bht3DkBNKA5UcV_o";
+const contractTxId = "ALgvvJ7aq7JnGFzamDkBhHnd1NzoXWOcmdrOMHCC3sA";
 let db;
 
 
@@ -24,7 +24,7 @@ const Home = () => {
     });
     {/*
     db = new SDK({
-         contractTxId:"sPyXyPDKw9uKFs43y7HFvsnKUE7bht3DkBNKA5UcV_o"
+         contractTxId:"ALgvvJ7aq7JnGFzamDkBhHnd1NzoXWOcmdrOMHCC3sA"
     })
     await db.initializeWithoutWallet()
     */}

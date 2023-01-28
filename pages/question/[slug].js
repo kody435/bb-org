@@ -1,10 +1,10 @@
 import SDK from "weavedb-node-client";
 // import WeaveDB from "weavedb-client";
-const contractTxId = "sPyXyPDKw9uKFs43y7HFvsnKUE7bht3DkBNKA5UcV_o";
+const contractTxId = "ALgvvJ7aq7JnGFzamDkBhHnd1NzoXWOcmdrOMHCC3sA";
 
 export async function getServerSideProps({ query }) {
   let db = new SDK({
-    contractTxId: "sPyXyPDKw9uKFs43y7HFvsnKUE7bht3DkBNKA5UcV_o",
+    contractTxId: "ALgvvJ7aq7JnGFzamDkBhHnd1NzoXWOcmdrOMHCC3sA",
     rpc: "lb.weavedb-node.xyz:443",
   });
 

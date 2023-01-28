@@ -6,7 +6,7 @@ import WeaveDB from "weavedb-sdk";
 
 
 let db;
-const contractTxId= "sPyXyPDKw9uKFs43y7HFvsnKUE7bht3DkBNKA5UcV_o" 
+const contractTxId= "ALgvvJ7aq7JnGFzamDkBhHnd1NzoXWOcmdrOMHCC3sA" 
 
 export default function Ask_Ques(props) {
   
