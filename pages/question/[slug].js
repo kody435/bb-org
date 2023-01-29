@@ -29,7 +29,7 @@ export default function Question({ question }) {
       <div className="text-4xl font-bold mt-10 mb-4">{question.title}</div>
       <div className="text-2xl font-medium mb-20">{question.question}</div>
       <div className="px-7 py-3 font-extrabold text-lg rounded-full text-white bg-gradient-to-r from-indigo-500 to-red-500 max-w-fit ">
-        Vote : {question.vote}
+        Upvote : {question.vote}
       </div>
     </div>
   );
