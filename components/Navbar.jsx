@@ -1,4 +1,3 @@
-
 import { useTheme } from "next-themes";
 import Link from "next/link";
 import { useState, useEffect } from "react";
@@ -10,7 +9,7 @@ export default function NavBar(props) {
   
   // I am using NextJS built in themes to change the theme
   // The useTheme hook is used to get the current theme and set the theme
-  const { theme, setTheme } = useTheme()
+  // const { theme, setTheme } = useTheme("light")
 
   
 
@@ -125,22 +124,21 @@ export default function NavBar(props) {
             }`}
           >
             <ul className="items-center justify-center text-center space-y-8 md:flex md:space-x-6 md:space-y-0 text-lg font-bold ">
-              <li className="hover:bg-blue-500 text-black">
+              <li className="hover:text-blue-600 text-black">
                 <Link href="/">Home</Link>
               </li>
-              <li className="hover:bg-blue-500 text-black">
+              <li className="hover:text-blue-600 text-black">
                 <Link href="/Ask-Question">Ask Question</Link>
               </li>
-              <li className="hover:bg-blue-500 text-black">
+              <li className="hover:text-blue-600 text-black">
                 <Link href="/">Notes</Link>
               </li>
-              <li ><button onClick={() => setTheme('light')}>Light Mode/ </button>
-              <button onClick={() => setTheme('dark')}>Dark Mode</button></li>
+              
             </ul>
           </div>
         </div>
         <div
-          className="hidden space-x-2 md:inline-block "
+          className="hidden space-x-2 md:flex "
           onClick={connectWallet}
         >
           {props.users ? (
@@ -152,6 +150,12 @@ export default function NavBar(props) {
           )}
 
           {!props.users && renderNotConnectedContainer()}
+            {/*
+          <li className="flex space-x-2">
+            <button onClick={() => setTheme('light')}>🌞</button>
+            <button onClick={() => setTheme('dark')}>🌑</button>
+          </li>
+          */}
         </div>
       </div>
     </nav>

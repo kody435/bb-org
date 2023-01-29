@@ -1,11 +1,11 @@
 import SDK from "weavedb-node-client";
 // import WeaveDB from "weavedb-client";
-const contractTxId = "sPyXyPDKw9uKFs43y7HFvsnKUE7bht3DkBNKA5UcV_o";
+const contractTxId = "ALgvvJ7aq7JnGFzamDkBhHnd1NzoXWOcmdrOMHCC3sA";
 
 export async function getServerSideProps({ query }) {
   let db = new SDK({
-    contractTxId: "sPyXyPDKw9uKFs43y7HFvsnKUE7bht3DkBNKA5UcV_o",
-    rpc: "grpc.asteroid.ac:443",
+    contractTxId: "ALgvvJ7aq7JnGFzamDkBhHnd1NzoXWOcmdrOMHCC3sA",
+    rpc: "lb.weavedb-node.xyz:443",
   });
 
   const questions = await db.get(
@@ -16,9 +16,10 @@ export async function getServerSideProps({ query }) {
   // console.log("query.slug= ", query.slug)
   return {
     props: {
-      jsondata: JSON.stringify(questions),
-      question: questions[0],
-    },
+        question: (
+          await db.get("Questions", ["slug"], ["slug", "=", query.slug])
+        )[0],
+    }
   };
 }
 
@@ -28,7 +29,7 @@ export default function Question({ question }) {
       <div className="text-4xl font-bold mt-10 mb-4">{question.title}</div>
       <div className="text-2xl font-medium mb-20">{question.question}</div>
       <div className="px-7 py-3 font-extrabold text-lg rounded-full text-white bg-gradient-to-r from-indigo-500 to-red-500 max-w-fit ">
-        Vote : {question.vote}
+        Upvote : {question.vote}
       </div>
     </div>
   );

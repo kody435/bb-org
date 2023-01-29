@@ -7,7 +7,7 @@ import Link from "next/link";
 import styles from "./common.module.css";
 
 
-const contractTxId = "sPyXyPDKw9uKFs43y7HFvsnKUE7bht3DkBNKA5UcV_o";
+const contractTxId = "ALgvvJ7aq7JnGFzamDkBhHnd1NzoXWOcmdrOMHCC3sA";
 let db;
 
 
@@ -20,11 +20,11 @@ const Home = () => {
     
     db = new WeaveDB({
         contractTxId: contractTxId,
-        rpc: "https://grpc.asteroid.ac:443",
+        rpc: "https://lb.weavedb-node.xyz:443",
     });
     {/*
     db = new SDK({
-         contractTxId:"sPyXyPDKw9uKFs43y7HFvsnKUE7bht3DkBNKA5UcV_o"
+         contractTxId:"ALgvvJ7aq7JnGFzamDkBhHnd1NzoXWOcmdrOMHCC3sA"
     })
     await db.initializeWithoutWallet()
     */}
@@ -51,7 +51,7 @@ const Home = () => {
 
       {/* Subjects */}
       <div className={styles.grid2}>
-        <h2 className="font-bold pl-4 mb-5 ">
+        <h2 className="font-bold pl-4 mb-5 px-5 py-2 bg-black text-white w-fit rounded-xl">
           Subjects
         </h2>
         <div className="pl-7">
@@ -66,12 +66,12 @@ const Home = () => {
       {/* Question */}
       <div className={styles.grid1}>
         <div className="">
-        <div className="border-2 bg-gradient-to-l from-cyan-500 to-blue-500 border-gray-200 rounded-t-3xl py-10 mr-10 pl-5" >
+        <div className="border-2 bg-gradient-to-l from-cyan-500 to-blue-500 border-gray-200 rounded-t-3xl py-10 lg:mr-10 pl-5" >
           <h1 className="text-5xl bg-transparent text-white font-extrabold flex mb-10">Have Questions ?</h1>
           <Link href="/Ask-Question" className="bg-black border-2 border-black hover:border-white text-white rounded-full py-3 px-8 font-bold hover:bg-white hover:text-black">ASK NOW!</Link>
           </div>
           
-        <div className="border-2 border-y-0 border-gray-200 mr-10 ">
+        <div className="border-2 border-y-0 border-gray-200 lg:mr-10 ">
             {map((v) => (
               <div className="flex flex-col p-4 border-b items-start">
                 <div className="flex items-start">
