@@ -51,10 +51,10 @@ const Home = () => {
 
       {/* Subjects */}
       <div className={styles.grid2}>
-        <h2 className="font-bold pl-4 mb-5 px-5 py-2 bg-black text-white w-fit rounded-xl">
+        <h2 className="font-bold pl-7 mb-5 px-7 py-2 bg-black text-white w-fit rounded-xl">
           Subjects
         </h2>
-        <div className="pl-7">
+        <div className="ml-7">
           {subjects.map((subjects, index) => (
               <div key={index} className="mb-3 font-semibold">
               <div className=''>{subjects.name}</div>
