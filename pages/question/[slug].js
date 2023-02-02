@@ -65,8 +65,8 @@ export default function Question({ question }) {
       <div>
         <Popup
           trigger={
-            <div className="px-6 py-3 text-xl font-bold bg-gradient-to-r from-cyan-500 to-blue-500 w-fit rounded-full mb-16 cursor-pointer">
-              have Answer?
+            <div className="px-7 text-black py-4 text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 hover:from-cyan-500 hover:to-blue-500 w-fit rounded-full mb-16 cursor-pointer">
+              have better Answer?
             </div>
           }
           modal
