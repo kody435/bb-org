@@ -130,10 +130,11 @@ export default function NavBar(props) {
               <li className="hover:text-blue-600 text-black">
                 <Link href="/Ask-Question">Ask Question</Link>
               </li>
+              {/*
               <li className="hover:text-blue-600 text-black">
                 <Link href="/">Notes</Link>
               </li>
-              
+              */}
             </ul>
           </div>
         </div>
