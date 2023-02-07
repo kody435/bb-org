@@ -123,15 +123,16 @@ export default function NavBar(props) {
               navbar ? "block" : "hidden"
             }`}
           >
-            <ul className="items-center justify-center text-center space-y-8 md:flex md:space-x-6 md:space-y-0 text-lg font-bold ">
+            <ul className="items-center justify-center text-center space-y-4 md:flex md:space-x-8 md:space-y-0 text-lg font-bold ">
               <li className="hover:text-blue-600 text-black">
                 <Link href="/">Home</Link>
               </li>
               <li className="hover:text-blue-600 text-black">
                 <Link href="/Ask-Question">Ask Question</Link>
               </li>
+              
               <li className="hover:text-blue-600 text-black">
-                <Link href="/">Notes</Link>
+                <Link href="/">Private Notes</Link>
               </li>
               
             </ul>
