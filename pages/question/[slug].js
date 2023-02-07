@@ -42,6 +42,21 @@ export default function Question({ question }) {
     },
   ]
 
+  const setupWeaveDB = async () => {
+    window.Buffer = Buffer;
+    db = new SDK({
+      contractTxId: contractTxId,
+    });
+    await db.initializeWithoutWallet();
+    setInitDB(true);
+  };
+
+  useEffect(() => {
+    setupWeaveDB();
+  }, []);
+
+  
+
   return (
     <div className="flex flex-col ml-10 text-black">
       <div className="text-4xl font-bold mt-10 mb-4">{question.title}</div>
@@ -85,7 +100,9 @@ export default function Question({ question }) {
                 />
               </div>
               <div className="flex justify-center mt-5">
-                <div className="flex justify-center mb-10 w-fit px-7 py-3 rounded-3xl bg-gradient-to-l from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500">
+                <div className="flex justify-center mb-10 w-fit px-7 py-3 rounded-3xl bg-gradient-to-l from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500"
+
+                >
                   Submit
                 </div>
               </div>
