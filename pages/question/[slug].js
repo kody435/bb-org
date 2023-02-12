@@ -6,8 +6,8 @@ import "reactjs-popup/dist/index.css";
 
 export async function getServerSideProps({ query }) {
   let db = new SDK({
-    contractTxId: "ALgvvJ7aq7JnGFzamDkBhHnd1NzoXWOcmdrOMHCC3sA",
-    rpc: "lb.weavedb-node.xyz:443",
+    contractTxId: "-x039YqlLK8LBcqORfWRLU4rvQHVW_X6PL4J-jWVuzs",
+    rpc: "weavedb-node.xyz:443",
   });
 
   const questions = await db.get(

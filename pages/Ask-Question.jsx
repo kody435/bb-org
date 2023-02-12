@@ -30,6 +30,7 @@ export default function Ask_Ques(props) {
 
  
   const addQuestion = async () => {
+    console.log("Button clicked")
        await db.add({ title: titles, question: questions,vote:0, user_address: props.users, slug: titles.split(" ").join("-").toLowerCase(), }, "Questions")
   };
 
