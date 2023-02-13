@@ -20,8 +20,8 @@
     "react-dom": "18.2.0",
     "reactjs-popup": "^2.0.5",
     "superjson": "^1.12.2",
-    "weavedb-client": "^0.20.2",
-    "weavedb-node-client": "^0.20.2",
+    "weavedb-client": "^0.19.2",
+    "weavedb-node-client": "^0.19.3",
     "weavedb-sdk": "^0.18.5"
   },
   "devDependencies": {
@@ -31,7 +31,20 @@
     "typescript": "4.8.4"
   },
   "browser": {
+    "fs": false,
+    "path": false,
+    "os": false,
+    "crypto": false,
+    "stream": false,
+    "http": false,
     "tls": false,
-    "net": false
+    "zlib": false,
+    "https": false,
+    "net": false,
+    "dgram": false,
+    "framer": false,
+    "http2": false,
+    "dns": false,
+    "@grpc": false
   }
 }

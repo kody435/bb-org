@@ -3,11 +3,12 @@ import SDK from "weavedb-node-client";
 const contractTxId = "ALgvvJ7aq7JnGFzamDkBhHnd1NzoXWOcmdrOMHCC3sA";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
+import { useEffect, useState } from "react";
 
 export async function getServerSideProps({ query }) {
   let db = new SDK({
-    contractTxId: "-x039YqlLK8LBcqORfWRLU4rvQHVW_X6PL4J-jWVuzs",
-    rpc: "weavedb-node.xyz:443",
+    contractTxId: "ALgvvJ7aq7JnGFzamDkBhHnd1NzoXWOcmdrOMHCC3sA",
+    rpc: "lb.weavedb-node.xyz:443",
   });
 
   const questions = await db.get(
