@@ -12,8 +12,6 @@
     "ethers": "^5.7.2",
     "localforage": "^1.10.0",
     "next": "latest",
-    "next-superjson": "^0.0.4",
-    "next-themes": "^0.2.1",
     "prettier": "^2.8.3",
     "ramda": "^0.28.0",
     "react": "18.2.0",
@@ -41,7 +39,7 @@
     "net": false,
     "dgram": false,
     "framer": false,
-    "http2": false,
-    "dns": false
+    "dns": false,
+    "http2": false
   }
 }
