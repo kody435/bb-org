@@ -69,7 +69,7 @@ export default function MyApp({ Component, pageProps, myProp }) {
   }, []);
   
   return (
-    <ThemeProvider class="class">
+    <div class="class">
       {user !== "" && <Navbar 
         users={user}
         setUsers={setUser}
@@ -83,7 +83,8 @@ export default function MyApp({ Component, pageProps, myProp }) {
         
       />
       <Analytics />
-    </ThemeProvider>
+    </div>
+
   );
 }
 
