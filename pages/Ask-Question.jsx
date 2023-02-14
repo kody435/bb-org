@@ -1,9 +1,7 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../components/common.module.css";
 import SDK from "weavedb-sdk";
 import Link from "next/link";
-import WeaveDB from "weavedb-sdk";
-
 
 let db;
 const contractTxId= "ALgvvJ7aq7JnGFzamDkBhHnd1NzoXWOcmdrOMHCC3sA" 

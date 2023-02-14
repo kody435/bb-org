@@ -18,8 +18,6 @@
     "ramda": "^0.28.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "reactjs-popup": "^2.0.5",
-    "superjson": "^1.12.2",
     "weavedb-client": "^0.19.2",
     "weavedb-node-client": "^0.19.3",
     "weavedb-sdk": "^0.18.5"
