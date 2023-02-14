@@ -77,7 +77,7 @@ export default function Ask_Ques(props) {
                 </tr>
               </div>
               <div
-                className="w-fit flex items-center justify-center font-bold py-5 text-center px-12 rounded-full border-2 border-black duration-700 hover:bg-black hover:text-white "
+                className="w-fit flex items-center justify-center font-bold py-4 text-center px-12 rounded-full border-2 border-black duration-700 hover:bg-black hover:text-white "
                 onClick={addQuestion}
               >
                 SUBMIT

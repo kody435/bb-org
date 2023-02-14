@@ -1,9 +1,6 @@
 import SDK from "weavedb-node-client";
-// import WeaveDB from "weavedb-client";
 const contractTxId = "ALgvvJ7aq7JnGFzamDkBhHnd1NzoXWOcmdrOMHCC3sA";
-import Popup from "reactjs-popup";
-import "reactjs-popup/dist/index.css";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 export async function getServerSideProps({ query }) {
   let db = new SDK({
@@ -78,38 +75,19 @@ export default function Question({ question }) {
       </div>
 
       {/* ANSWER */}
-      <div>
-        <Popup
-          trigger={
-            <div className="px-7 text-black py-4 text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 hover:from-cyan-500 hover:to-blue-500 w-fit rounded-full mb-16 cursor-pointer">
-              have better Answer?
-            </div>
-          }
-          modal
-          nested
-        >
-          {(close) => (
-            <div className="w-full flex justify-center flex-col mt-10">
-              <h2 className="mb-5 flex justify-center font-semibold text-2xl">
-                Enter your answer here
-              </h2>
-              <div className="w-full flex justify-center mb-5">
-                <textarea
-                  type="text"
-                  className="w-full mx-14 rounded-2xl px-4 py-2 bg-white border-2 border-gray-400 h-48"
-                  placeholder="Enter your answer here"
-                />
-              </div>
-              <div className="flex justify-center mt-5">
-                <div className="flex justify-center mb-10 w-fit px-7 py-3 rounded-3xl bg-gradient-to-l from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500"
-
-                >
-                  Submit
-                </div>
-              </div>
-            </div>
-          )}
-        </Popup>
+      <div className="mb-36 mt-20">
+        <h2 className="text-3xl font-bold">Have better answer?</h2>
+        <div className="flex flex-col ">
+          <div className="flex flex-col mb-10 mt-10 ">
+            <textarea
+              placeholder="here you go"
+              className="rounded-2xl border-2 h-56 w-100 mr-96 border-gray-500 text-xl p-2"
+            />
+          </div>
+          <div className="w-fit flex items-center justify-center font-bold py-4 text-center px-12 rounded-full border-2 border-black duration-700 hover:bg-black hover:text-white ">
+            SUBMIT
+          </div>
+        </div>
       </div>
     </div>
   );
