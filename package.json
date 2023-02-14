@@ -42,7 +42,6 @@
     "dgram": false,
     "framer": false,
     "http2": false,
-    "dns": false,
-    "@grpc": false
+    "dns": false
   }
 }
