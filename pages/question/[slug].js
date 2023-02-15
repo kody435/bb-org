@@ -8,11 +8,11 @@ export async function getServerSideProps({ query }) {
     rpc: "lb.weavedb-node.xyz:443",
   });
 
-  const questions = await db.get(
+  {/*const questions = await db.get(
     "Questions",
     ["slug"],
     ["slug", "=", query.slug]
-  );
+  );*/}
   // console.log("query.slug= ", query.slug)
   return {
     props: {
