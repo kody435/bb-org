@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Buffer } from "buffer";
 import { map } from "ramda";
-import SDK from 'weavedb-sdk'
+// import SDK from 'weavedb-sdk'
 import WeaveDB from "weavedb-client";
 import Link from "next/link";
 import styles from "./common.module.css";
@@ -20,7 +20,7 @@ const Home = () => {
     
     db = new WeaveDB({
         contractTxId: contractTxId,
-        rpc: "https://lb.weavedb-node.xyz:443",
+        rpc: "https://grpc.weavedb-node.xyz",
     });
     {/*
     db = new SDK({

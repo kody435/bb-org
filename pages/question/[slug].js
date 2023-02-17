@@ -5,26 +5,28 @@ import { useEffect } from "react";
 export async function getServerSideProps({ query }) {
   let db = new SDK({
     contractTxId: "ALgvvJ7aq7JnGFzamDkBhHnd1NzoXWOcmdrOMHCC3sA",
-    rpc: "lb.weavedb-node.xyz:443",
+    // rpc: "lb.weavedb-node.xyz:443",
+    rpc: "grpc.weavedb-node.xyz:443",
   });
 
-  {/*const questions = await db.get(
+  {
+    /*const questions = await db.get(
     "Questions",
     ["slug"],
     ["slug", "=", query.slug]
-  );*/}
+  );*/
+  }
   // console.log("query.slug= ", query.slug)
   return {
     props: {
-        question: (
-          await db.get("Questions", ["slug"], ["slug", "=", query.slug])
-        )[0],
-    }
+      question: (
+        await db.get("Questions", ["slug"], ["slug", "=", query.slug])
+      )[0],
+    },
   };
 }
 
 export default function Question({ question }) {
-
   const answers = [
     {
       answer: "This is the answer",
@@ -38,7 +40,7 @@ export default function Question({ question }) {
       answer: "This is the answer",
       vote: 6,
     },
-  ]
+  ];
 
   const setupWeaveDB = async () => {
     window.Buffer = Buffer;
@@ -53,8 +55,6 @@ export default function Question({ question }) {
     setupWeaveDB();
   }, []);
 
-  
-
   return (
     <div className="flex flex-col ml-10 text-black">
       <div className="text-4xl font-bold mt-10 mb-4">{question.title}</div>
@@ -63,7 +63,7 @@ export default function Question({ question }) {
         <h2 className="font-bold text-3xl mt-16 mb-12">Answers</h2>
         <div className="ml-10">
           {answers.map((answer) => (
-            <div className="flex flex-col text-black mb-12">
+            <div className="flex flex-col text-black mb-12" key={answer.vote}>
               <div className="text-2xl font-medium mb-3">{answer.answer}</div>
               <div className="px-7 py-3 font-light text-lg rounded-full text-white bg-gradient-to-r from-indigo-500 to-red-500 max-w-fit ">
                 Upvote : {answer.vote}
