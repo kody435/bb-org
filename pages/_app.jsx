@@ -69,7 +69,7 @@ export default function MyApp({ Component, pageProps, myProp }) {
   }, []);
   
   return (
-    <div class="class">
+    <div className="class">
       {user !== "" && <Navbar 
         users={user}
         setUsers={setUser}
