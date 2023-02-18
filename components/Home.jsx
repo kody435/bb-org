@@ -20,7 +20,6 @@ const Home = () => {
     })
 
     useEffect(() => {
-        window.Buffer = Buffer
         (async () => {
             setQuestion(await db.cget("Questions", true))
             setLoading(false)
@@ -55,6 +54,28 @@ const Home = () => {
                     <div className="border-2 border-y-0 border-gray-200 lg:mr-10 ">
                                 
                         {/* Questions Mapping */}
+
+                        {loading ? (
+                            <>loading...</>
+                            ) : (
+                            <>
+                                {question.map((question, i) => {
+                                    return (
+                                        <div className="flex flex-col p-4 border-b items-start">
+                                            <div className="flex items-start">
+                                            {question.data.title}
+                                            </div>
+
+                                            <Link href={`/question/${question.data.slug}`} className="flex items-end">  
+                                            <div className="font-bold mt-2 px-3 py-1 border-2 text-yellow border-black hover:bg-black hover:text-white rounded-full  ">
+                                                Answer
+                                            </div>
+                                            </Link>
+                                        </div>
+                                    )
+                                })}
+                            </>
+                        )}
                                 
                     </div>
                 </div>
