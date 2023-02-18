@@ -1,26 +1,17 @@
 import SDK from "weavedb-node-client";
-const contractTxId = "ALgvvJ7aq7JnGFzamDkBhHnd1NzoXWOcmdrOMHCC3sA";
-import { useEffect } from "react";
+import { contractTxId, rpc } from "../../config"
+
 
 export async function getServerSideProps({ query }) {
   let db = new SDK({
-    contractTxId: "ALgvvJ7aq7JnGFzamDkBhHnd1NzoXWOcmdrOMHCC3sA",
-    // rpc: "lb.weavedb-node.xyz:443",
-    rpc: "grpc.weavedb-node.xyz:443",
+    contractTxId: contractTxId,
+    rpc: rpc,
   });
-
-  {
-    /*const questions = await db.get(
-    "Questions",
-    ["slug"],
-    ["slug", "=", query.slug]
-  );*/
-  }
-  // console.log("query.slug= ", query.slug)
+    
   return {
     props: {
       question: (
-        await db.get("Questions", ["slug"], ["slug", "=", query.slug])
+        await db.cget("Questions", ["slug"], ["slug", "=", query.slug])
       )[0],
     },
   };
@@ -44,8 +35,8 @@ export default function Question({ question }) {
 
   return (
     <div className="flex flex-col ml-10 text-black">
-      <div className="text-4xl font-bold mt-10 mb-4">{question.title}</div>
-      <div className="text-2xl font-medium mb-10">{question.question}</div>
+      <div className="text-4xl font-bold mt-10 mb-4">{question.data.title}</div>
+      <div className="text-2xl font-medium mb-10">{question.data.question}</div>
       <div>
         <h2 className="font-bold text-3xl mt-16 mb-12">Answers</h2>
         <div className="ml-10">
@@ -62,20 +53,22 @@ export default function Question({ question }) {
       </div>
 
       {/* ANSWER */}
-      <div className="mb-36 mt-20">
-        <h2 className="text-3xl font-bold">Have better answer?</h2>
-        <div className="flex flex-col ">
-          <div className="flex flex-col mb-10 mt-10 ">
-            <textarea
-              placeholder="here you go"
-              className="rounded-2xl border-2 h-56 w-100 mr-96 border-gray-500 text-xl p-2"
-            />
-          </div>
-          <div className="w-fit flex items-center justify-center font-bold py-4 text-center px-12 rounded-full border-2 border-black duration-700 hover:bg-black hover:text-white ">
-            SUBMIT
-          </div>
+        <div className="mb-36 mt-20">
+            <h2 className="text-3xl font-bold">Have better answer?</h2>
+            <div className="flex flex-col ">
+                <div className="flex flex-col mb-10 mt-10 ">
+                    <textarea
+                    placeholder="here you go"
+                    className="rounded-2xl border-2 h-56 w-100 mr-96 border-gray-500 text-xl p-2"
+                    />
+                </div>
+                <div className="w-fit flex items-center justify-center font-bold py-4 text-center px-12 rounded-full border-2 border-black duration-700 hover:bg-black hover:text-white "
+                            
+                    >
+                    SUBMIT
+                </div>
+            </div>
         </div>
-      </div>
     </div>
   );
 }

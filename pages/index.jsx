@@ -1,8 +1,8 @@
 import Head from "next/head";
+import LandingPage from "../components/LandingPage";
 import _app from 'next/app';
-import LandingPage from '../components/LandingPage';
 
-const Main = () => {
+const Main = (props) => {
   
   return (
     <div className="">
@@ -12,7 +12,7 @@ const Main = () => {
       </Head>
 
       <main>
-        <LandingPage />
+        <LandingPage setUsers={props.setUsers} users={props.users} myProp={props.myProp}/>
       </main>
     </div>
   );

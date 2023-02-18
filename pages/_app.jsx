@@ -1,0 +1,89 @@
+import "../styles/globals.css";
+import { AppProps } from "next/app";
+import Navbar from "../components/Navbar";
+import { Analytics } from "@vercel/analytics/react";
+import React, { useState, useEffect} from "react";
+
+
+export default function MyApp({ Component, pageProps, myProp }) {
+  
+  const [user, setUser] = useState("");
+ 
+
+  function ether() {
+    const {ethereum} = window;
+
+    if (ethereum) {
+        return ethereum;
+    } else {  
+      console.log("No ethereum object found, please install MetaMask")
+      return; 
+    }
+  }
+
+
+  const getCurrentWalletConnected = async () => {
+    const eth = ether();
+    
+    if (eth) {
+    const accountsArray = await eth.request({ method: "eth_accounts" });
+
+    if (accountsArray.length > 0) {
+      setUser(accountsArray[0]);
+    } else {
+      setUser("")
+    }
+    }
+  };
+
+  function walletListener() {
+    const ethereum = ether();
+
+    if(ethereum){
+    ethereum.on("accountsChanged", function (accounts) {
+        if (accounts.length > 0) {
+            setUser(accounts[0]);
+            
+        } else{
+            setUser("")
+            console.log("Please connect to MetaMask.");
+        }
+    });
+
+    ethereum.on('disconnect', () => {
+        setUser("");
+        
+      });
+    }
+  }
+
+
+  // Use effect runs after so db doesnt get initialized until after everything else returns
+  // This means we should initialize the db wherever we are going to use it
+  // I will come back to this to test it out
+  
+  useEffect(() => {
+    getCurrentWalletConnected();
+    walletListener();
+  }, []);
+  
+  return (
+    <div className="class">
+      {user !== "" && <Navbar 
+        users={user}
+        setUsers={setUser}
+       
+      />}
+      
+      <Component 
+        {...pageProps} 
+        users={user}
+        setUsers={setUser}
+        
+      />
+      <Analytics />
+    </div>
+
+  );
+}
+
