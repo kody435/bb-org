@@ -1,6 +1,6 @@
 import Head from "next/head";
 import _app from 'next/app';
-import Home from '../components/Home';
+import LandingPage from '../components/LandingPage';
 
 const Main = () => {
   
@@ -12,7 +12,7 @@ const Main = () => {
       </Head>
 
       <main>
-        <Home />
+        <LandingPage />
       </main>
     </div>
   );
