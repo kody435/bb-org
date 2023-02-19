@@ -53,10 +53,10 @@ export default function Question({ question }) {
             <div className="flex flex-col text-black mb-12" key={answer.vote}>
               <div className="text-2xl font-medium mb-3">{answer.answer}</div>
               <div
-                className="px-7 py-3 font-light text-lg rounded-full text-white bg-gradient-to-r from-indigo-500 to-red-500 max-w-fit "
+                className="px-3 py-1 font-light text-lg rounded-full text-white bg-gradient-to-r from-indigo-500 to-red-500 max-w-fit "
                 onClick={incVote}
               >
-                Upvote : {answer.vote}
+                upvote : {answer.vote}
               </div>
               <br></br>
             </div>
