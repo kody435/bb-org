@@ -3,11 +3,12 @@ import { contractTxId, rpc } from "../../config"
 
 
 export async function getServerSideProps({ query }) {
+
   let db = new SDK({
     contractTxId: contractTxId,
     rpc: rpc,
   });
-    
+
   return {
     props: {
       question: (
@@ -18,20 +19,28 @@ export async function getServerSideProps({ query }) {
 }
 
 export default function Question({ question }) {
-  const answers = [
-    {
-      answer: "This is the answer",
-      vote: 4,
-    },
-    {
-      answer: "This is the answer",
-      vote: 10,
-    },
-    {
-      answer: "This is the answer",
-      vote: 6,
-    },
-  ];
+    const answers = [
+      {
+        answer: "This is the answer",
+        vote: 4,
+      },
+      {
+        answer: "This is the answer",
+        vote: 10,
+      },
+      {
+        answer: "This is the answer",
+        vote: 6,
+      },
+    ];
+    console.log(question)
+    
+    const incVote = async () => {
+        await db.update({ "vote": db.inc(1) }, "Questions", question.id)
+    };
+
+  
+  // {question.id} = Id of the question in the collection
 
   return (
     <div className="flex flex-col ml-10 text-black">
@@ -43,7 +52,10 @@ export default function Question({ question }) {
           {answers.map((answer) => (
             <div className="flex flex-col text-black mb-12" key={answer.vote}>
               <div className="text-2xl font-medium mb-3">{answer.answer}</div>
-              <div className="px-7 py-3 font-light text-lg rounded-full text-white bg-gradient-to-r from-indigo-500 to-red-500 max-w-fit ">
+              <div
+                className="px-7 py-3 font-light text-lg rounded-full text-white bg-gradient-to-r from-indigo-500 to-red-500 max-w-fit "
+                onClick={incVote}
+              >
                 Upvote : {answer.vote}
               </div>
               <br></br>
