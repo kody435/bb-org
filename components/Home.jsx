@@ -4,6 +4,7 @@ import { contractTxId, rpc } from "../config"
 import SDK from "weavedb-client"
 import { useEffect, useState } from "react"
 import { Buffer } from "buffer"
+import { map } from "ramda"
 
 
 const Home = () => {
@@ -59,8 +60,7 @@ const Home = () => {
                             <>loading...</>
                             ) : (
                             <>
-                                {question.map((question, i) => {
-                                    return (
+                                {map(question => (
                                         <div className="flex flex-col p-4 border-b items-start">
                                             <div className="flex items-start">
                                             {question.data.title}
@@ -72,8 +72,7 @@ const Home = () => {
                                             </div>
                                             </Link>
                                         </div>
-                                    )
-                                })}
+                                ))}
                             </>
                         )}
                                 
