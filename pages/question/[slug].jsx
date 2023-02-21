@@ -19,21 +19,6 @@ export async function getServerSideProps({ query }) {
 }
 
 export default function Question({ question }) {
-    const answers = [
-      {
-        answer: "This is the answer",
-        vote: 4,
-      },
-      {
-        answer: "This is the answer",
-        vote: 10,
-      },
-      {
-        answer: "This is the answer",
-        vote: 6,
-      },
-    ];
-    console.log(question)
     
     const incVote = async () => {
         await db.update({ "vote": db.inc(1) }, "Questions", question.id)
@@ -49,7 +34,7 @@ export default function Question({ question }) {
       <div>
         <h2 className="font-bold text-3xl mt-16 mb-12">Answers</h2>
         <div className="ml-10">
-          {answers.map((answer) => (
+          {question.data.answers.map((answer) => (
             <div className="flex flex-col text-black mb-12" key={answer.vote}>
               <div className="text-2xl font-medium mb-3">{answer.answer}</div>
               <div
