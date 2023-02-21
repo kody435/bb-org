@@ -30,7 +30,6 @@ export default function Ask_Ques(props) {
       {
         title: titles,
         question: questions,
-        vote: 0,
         user_address: props.users,
         slug: titles.split(" ").join("-").toLowerCase(),
       },
@@ -92,7 +91,7 @@ export default function Ask_Ques(props) {
                 </tr>
               </div>
               <div
-                className="w-fit flex items-center justify-center font-bold py-4 text-center px-12 rounded-full border-2 border-black duration-700 hover:bg-black hover:text-white "
+                className="w-fit flex items-center justify-center font-bold py-2 text-center px-6 rounded-full border-2 border-black duration-700 hover:bg-black hover:text-white "
                 onClick={addQuestion}
               >
                 SUBMIT

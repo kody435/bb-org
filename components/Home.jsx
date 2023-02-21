@@ -33,6 +33,8 @@ const Home = () => {
     rpc: `https://${rpc}`,
   });
 
+  console.log(question)
+
   // Fetching Questions from WeaveDB
   useEffect(() => {
     (async () => {

@@ -41,7 +41,7 @@ export default function Question({ question }) {
                 className="px-3 py-1 font-light text-lg rounded-full text-white bg-gradient-to-r from-indigo-500 to-red-500 max-w-fit "
                 onClick={incVote}
               >
-                upvote : {answer.vote}
+                upvote : {question.vote}
               </div>
               <br></br>
             </div>
@@ -59,7 +59,7 @@ export default function Question({ question }) {
                     className="rounded-2xl border-2 h-56 w-100 mr-96 border-gray-500 text-xl p-2"
                     />
                 </div>
-                <div className="w-fit flex items-center justify-center font-bold py-4 text-center px-12 rounded-full border-2 border-black duration-700 hover:bg-black hover:text-white "
+                <div className="w-fit flex items-center justify-center font-bold py-2 text-center px-6 rounded-full border-2 border-black duration-700 hover:bg-black hover:text-white "
                             
                     >
                     SUBMIT
