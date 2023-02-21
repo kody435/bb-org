@@ -23,7 +23,6 @@ export default function Question({ question }) {
     const incVote = async () => {
         await db.update({ "vote": db.inc(1) }, "Questions", question.id)
     };
-
   
   // {question.id} = Id of the question in the collection
 
@@ -41,7 +40,7 @@ export default function Question({ question }) {
                 className="px-3 py-1 font-light text-lg rounded-full text-white bg-gradient-to-r from-indigo-500 to-red-500 max-w-fit "
                 onClick={incVote}
               >
-                upvote : {question.vote}
+                upvote : {question.data.answers[0].vote}
               </div>
               <br></br>
             </div>

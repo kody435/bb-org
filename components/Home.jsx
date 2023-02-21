@@ -8,7 +8,6 @@ import { map } from "ramda";
 const Home = () => {
   const [question, setQuestion] = useState([]);
   const [loading, setLoading] = useState(true);
-  console.log(question)
 
   // Subjects JSON
   const subjects = [
@@ -33,12 +32,10 @@ const Home = () => {
     rpc: `https://${rpc}`,
   });
 
-  console.log(question)
-
   // Fetching Questions from WeaveDB
   useEffect(() => {
     (async () => {
-      setQuestion(await db.cget("Questions", true));
+      setQuestion(await db.cget("Questions",["title"], true));
       setLoading(false);
     })();
   });
@@ -78,7 +75,9 @@ const Home = () => {
             {/* Questions Mapping */}
 
             {loading ? (
-              <>loading...</>
+              <div className="pl-5 py-10 border-0 border-b-2 border-gray-200 ">
+                <div className="font- text-2xl">Loading...</div>
+              </div>
             ) : (
               <>
                 {question.map((question) => (

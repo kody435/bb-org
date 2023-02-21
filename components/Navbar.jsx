@@ -29,8 +29,6 @@ export default function NavBar(props) {
     if (!ethereum) {
       alert("Make sure you have metamask!");
       return;
-    } else {
-      console.log("We have the ethereum object", ethereum);
     }
 
     const accounts = await ethereum.request({ method: "eth_accounts" });
