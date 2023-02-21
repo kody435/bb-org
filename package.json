@@ -1,32 +1,42 @@
 {
+  "name": "my-project",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
-    "prettier": "npx prettier --write  . ",
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "next lint",
+    "prettier": "prettier ./**/*.{ts,tsx} --write"
+  },
+  "node": {
+    "fs": "empty",
+    "tls": "empty"
   },
   "dependencies": {
-    "@vercel/analytics": "^0.1.6",
-    "buffer": "^6.0.3",
-    "ethers": "^5.7.2",
-    "localforage": "^1.10.0",
-    "next": "latest",
-    "next-superjson": "^0.0.4",
-    "next-themes": "^0.2.1",
-    "prettier": "^2.8.3",
+    "@next/font": "13.1.6",
+    "@types/node": "18.13.0",
+    "@types/react": "18.0.28",
+    "@types/react-dom": "18.0.11",
+    "@vercel/analytics": "^0.1.10",
+    "eslint": "8.34.0",
+    "eslint-config-next": "13.1.6",
+    "next": "13.1.6",
+    "prettier": "^2.8.4",
     "ramda": "^0.28.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "superjson": "^1.12.2",
-    "weavedb-client": "^0.13.5",
-    "weavedb-node-client": "^0.13.5",
-    "weavedb-sdk": "^0.13.2"
+    "typescript": "4.9.5",
+    "weavedb-client": "^0.20.0",
+    "weavedb-node-client": "^0.19.4",
+    "weavedb-sdk": "^0.18.5",
+    "weavedb-sdk-node": "^0.20.29"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.12",
-    "postcss": "^8.4.18",
-    "tailwindcss": "^3.2.1",
-    "typescript": "4.8.4"
+    "autoprefixer": "^10.4.13",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.1.2",
+    "postcss": "^8.4.21",
+    "tailwindcss": "^3.2.7"
   }
 }

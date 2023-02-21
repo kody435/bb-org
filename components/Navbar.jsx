@@ -1,4 +1,3 @@
-import { useTheme } from "next-themes";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 
@@ -6,14 +5,7 @@ export default function NavBar(props) {
   
   const [navbar, setNavbar] = useState(false);
   const [user, setUser] = useState("");
-  
-  // I am using NextJS built in themes to change the theme
-  // The useTheme hook is used to get the current theme and set the theme
-  // const { theme, setTheme } = useTheme("light")
 
-  
-
-  
 
   const connectWallet = async () => {
     try {
@@ -123,15 +115,16 @@ export default function NavBar(props) {
               navbar ? "block" : "hidden"
             }`}
           >
-            <ul className="items-center justify-center text-center space-y-8 md:flex md:space-x-6 md:space-y-0 text-lg font-bold ">
+            <ul className="items-center justify-center text-center space-y-4 md:flex md:space-x-8 md:space-y-0 text-lg font-bold ">
               <li className="hover:text-blue-600 text-black">
                 <Link href="/">Home</Link>
               </li>
               <li className="hover:text-blue-600 text-black">
                 <Link href="/Ask-Question">Ask Question</Link>
               </li>
+              
               <li className="hover:text-blue-600 text-black">
-                <Link href="/">Notes</Link>
+                <Link href="/">Private Notes</Link>
               </li>
               
             </ul>
