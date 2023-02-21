@@ -2,10 +2,8 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 
 export default function NavBar(props) {
-  
   const [navbar, setNavbar] = useState(false);
   const [user, setUser] = useState("");
-
 
   const connectWallet = async () => {
     try {
@@ -48,7 +46,6 @@ export default function NavBar(props) {
   useEffect(() => {
     checkIfWalletIsConnected();
   }, []);
-
 
   const renderNotConnectedContainer = () => (
     <div className="connect-container">
@@ -122,18 +119,14 @@ export default function NavBar(props) {
               <li className="hover:text-blue-600 text-black">
                 <Link href="/Ask-Question">Ask Question</Link>
               </li>
-              
+
               <li className="hover:text-blue-600 text-black">
                 <Link href="/">Private Notes</Link>
               </li>
-              
             </ul>
           </div>
         </div>
-        <div
-          className="hidden space-x-2 md:flex "
-          onClick={connectWallet}
-        >
+        <div className="hidden space-x-2 md:flex " onClick={connectWallet}>
           {props.users ? (
             <div className="font-bold bg-black p-4 text-white rounded-2xl">
               {props.users.slice(0, 5)}...{props.users.slice(-5)}{" "}
@@ -143,7 +136,7 @@ export default function NavBar(props) {
           )}
 
           {!props.users && renderNotConnectedContainer()}
-            {/*
+          {/*
           <li className="flex space-x-2">
             <button onClick={() => setTheme('light')}>🌞</button>
             <button onClick={() => setTheme('dark')}>🌑</button>
