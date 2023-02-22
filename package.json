@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prettier": "prettier ./**/*.{ts,tsx} --write"
+    "prettier": "prettier ./**/*.{js,jsx} --write"
   },
   "node": {
     "fs": "empty",
