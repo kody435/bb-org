@@ -26,6 +26,9 @@ export default function Ask_Ques(props) {
   }, []);
 
   const addQuestion = async () => {
+
+    // New logic to add question to the database
+    
     await db.add(
       {
         title: titles,
