@@ -35,7 +35,7 @@ const Home = () => {
   // Fetching Questions from WeaveDB
   useEffect(() => {
     (async () => {
-      setQuestion(await db.cget("Questions",["title"], true));
+      setQuestion(await db.cget("Questions", ["title"], true));
       setLoading(false);
     })();
   });

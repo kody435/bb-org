@@ -126,7 +126,7 @@ export default function NavBar(props) {
         </div>
         <div className="hidden space-x-2 md:flex " onClick={connectWallet}>
           {props.users ? (
-            <div className="font-bold bg-black p-4 text-white rounded-2xl">
+            <div className="font-bold bg-black px-3 py-2 text-white rounded-full">
               {props.users.slice(0, 5)}...{props.users.slice(-5)}{" "}
             </div>
           ) : (
