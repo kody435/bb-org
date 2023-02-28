@@ -29,9 +29,12 @@ export default function Ask_Ques(props) {
     console.log("Adding question to the database");
 
     // New logic to add question to the database
-    
+
     if (titles === "") {
       alert("Title cannot be empty");
+      return;
+    } else if (questions === "") {
+      alert("Question cannot be empty");
       return;
     } try {
       await db.add(
