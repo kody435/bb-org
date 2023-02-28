@@ -26,18 +26,26 @@ export default function Ask_Ques(props) {
   }, []);
 
   const addQuestion = async () => {
+    console.log("Adding question to the database");
 
     // New logic to add question to the database
     
-    await db.add(
-      {
-        title: titles,
-        question: questions,
-        user_address: props.users,
-        slug: titles.split(" ").join("-").toLowerCase(),
-      },
-      "Questions"
-    );
+    if (titles === "") {
+      alert("Title cannot be empty");
+      return;
+    } try {
+      await db.add(
+        {
+          title: titles,
+          question: questions,
+          user_address: props.users,
+          slug: titles.split(" ").join("-").toLowerCase(),
+        },
+        "Questions"
+      );
+    } catch (e) {
+      alert("Browser side error")
+    }
   };
 
   return props.users === "" ? (
