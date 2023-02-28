@@ -1,5 +1,6 @@
 import SDK from "weavedb-node-client";
 import { contractTxId, rpc } from "../../config"
+import {map} from "ramda"
 
 
 export async function getServerSideProps({ query }) {
@@ -12,7 +13,7 @@ export async function getServerSideProps({ query }) {
   return {
     props: {
       question: (
-        await db.cget("Questions", ["slug"], ["slug", "=", query.slug])
+        await db.get("Questions", ["slug"], ["slug", "=", query.slug])
       )[0],
     },
   };
@@ -25,6 +26,7 @@ export default function Question({ question }) {
     };
   
   // {question.id} = Id of the question in the collection
+  console.log(question)
 
   return (
     <div className="flex flex-col ml-10 text-black">
@@ -33,18 +35,18 @@ export default function Question({ question }) {
       <div>
         <h2 className="font-bold text-3xl mt-16 mb-12">Answers</h2>
         <div className="ml-10">
-          {question.data.answers.map((answer) => (
+          {map((answer) => (
             <div className="flex flex-col text-black mb-12" key={answer.vote}>
-              <div className="text-2xl font-medium mb-3">{answer.answer}</div>
+              <div className="text-2xl font-medium mb-3">{answer.answers.answer}</div>
               <div
                 className="px-3 py-1 font-light text-lg rounded-full text-white bg-gradient-to-r from-indigo-500 to-red-500 max-w-fit "
                 onClick={incVote}
               >
-                upvote : {question.data.answers[0].vote}
+                upvote : {answer.data.answers.vote}
               </div>
               <br></br>
             </div>
-          ))}
+          ),[])}
         </div>
       </div>
 
